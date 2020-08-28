@@ -1,0 +1,2 @@
+- Opção de pesquisa em estoque 27/12/2018
+- Não obrigatoriedade de cadastrar o ip para testes 27/12/2018
