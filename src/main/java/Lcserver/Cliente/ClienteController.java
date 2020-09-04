@@ -50,21 +50,20 @@ public class ClienteController {
     private UsuarioDao usuarioDao;
 
     @Transactional(rollbackFor = {Throwable.class, Exception.class})
-    @PostMapping("/clientes/salvar")
+    @PostMapping("/empresas/{idEmpresa}/clientes/salvar")
     @ResponseStatus(HttpStatus.OK)
-    public ClienteDtoOutput salvar(@Valid @RequestBody ClienteNovoDtoInput clienteDtoInput, @RequestHeader String imei) {
-        TelaPrincipal.TelaPrincipal.setLogAndValidaImei("/clientes/salvar", imei);
+    public ClienteDtoOutput salvar(@PathVariable Integer idEmpresa, @Valid @RequestBody ClienteNovoDtoInput clienteDtoInput, @RequestHeader String imei) {
+        TelaPrincipal.TelaPrincipal.setLogAndValidaImei("/clientes/salvar", imei, idEmpresa);
         clienteDtoInput.isValid(usuarioDao, clienteDao);
         Cliente cliente = clienteDao.save(clienteDtoInput.buildCliente(clienteDao));
-        System.out.println(">>>>>>>>>>>>>>>>>>>>"+cliente.getEstado().getId());
         return new ClienteDtoOutput(cliente);
     }
 
-    @GetMapping("/clientes/{nome}/{imei}")
+    @GetMapping("/empresas/{idEmpresa}/clientes/{nome}/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ClienteDtoOutput> getClienteByNome(@PathVariable String nome, @PathVariable String imei) {
+    public List<ClienteDtoOutput> getClienteByNome(@PathVariable Integer idEmpresa, @PathVariable String nome, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getClienteByNome");
-        BalcaoMobile mobile = mobileControle.validaAndroid(imei);
+        BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário inativo! Ative-o no servidor!");
@@ -80,11 +79,11 @@ public class ClienteController {
         return listCliente;
     }
 
-    @GetMapping("/clientes/cartao/{cartao}/{imei}")
+    @GetMapping("/empresas/{idEmpresa}/clientes/cartao/{cartao}/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public Cliente getClienteCartao(@PathVariable String cartao, @PathVariable String imei) {
+    public Cliente getClienteCartao(@PathVariable Integer idEmpresa, @PathVariable String cartao, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getClienteCartao");
-        BalcaoMobile mobile = mobileControle.validaAndroid(imei);
+        BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário inativo! Ative-o no servidor!");

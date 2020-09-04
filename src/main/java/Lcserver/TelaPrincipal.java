@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -48,8 +49,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private String txtErro = "";
     private DefaultTableModel modeloMobile = null;
     private BalcaoMobile mobileTemp = null;
-    private ArrayList<BalcaoMobile> listMobile = new ArrayList();
-    private ArrayList<Empresa> listEmpresa = new ArrayList();
+    public ArrayList<BalcaoMobile> listMobile = new ArrayList();
+    public ArrayList<Empresa> listEmpresa = new ArrayList();
     public static TelaPrincipal TelaPrincipal;
     public static BalcaoSysTray balcaoSysTray;
 
@@ -82,11 +83,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextArea1.setText(this.txt);
     }
 
-    public void setLogAndValidaImei(String log, String imei) {
+    public void setLogAndValidaImei(String log, String imei, Integer idEmpresa) {
         this.txt = jTextArea1.getText();
         this.txt += log + " - " + Funcoes.getDataHoraPC() + "\n";
         jTextArea1.setText(this.txt);
-        BalcaoMobile mobile = mobileControle.validaAndroid(imei);
+        BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
         atualizaTabela();
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário inativo! Ative-o no servidor!");
@@ -123,6 +124,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public void atualizaTabela() {
+//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfigDao.getBalcaoConfigById(idEmpresa)));
         modeloMobile.setNumRows(0);
         listMobile = (ArrayList<BalcaoMobile>) mobileControle.getListMobileByIdEmpresa(String.valueOf(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId()));
         for (BalcaoMobile m : listMobile) {
@@ -184,8 +186,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jb_sair2 = new javax.swing.JButton();
+        jb_salvar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -202,10 +204,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtb_tabelaMobile = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jb_atualizar = new javax.swing.JButton();
+        jb_detalhar = new javax.swing.JButton();
+        jb_sair = new javax.swing.JButton();
+        jb_excluir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jtf_codInstalacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -247,21 +250,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jButton5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/door_in.png"));
-        jButton5.setText("Sair");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jb_sair2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jb_sair2.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/door_in.png"));
+        jb_sair2.setText("Sair");
+        jb_sair2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jb_sair2ActionPerformed(evt);
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/disk.png"));
-        jButton7.setText("Salvar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jb_salvar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jb_salvar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/disk.png"));
+        jb_salvar.setText("Salvar");
+        jb_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jb_salvarActionPerformed(evt);
             }
         });
 
@@ -302,9 +305,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton7)
+                        .addComponent(jb_salvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5))
+                        .addComponent(jb_sair2))
                     .addGroup(jPanelLayout.createSequentialGroup()
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -335,43 +338,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox2, jtf_dispPermitido1, jtf_id1, jtf_imei1, jtf_nomeMobile1, jtf_usuario1});
 
-        jPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton7});
+        jPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jb_sair2, jb_salvar});
 
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtf_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_imei1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_nomeMobile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)))
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jtf_dispPermitido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(jtf_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel12)
+                    .addComponent(jtf_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15)
+                    .addComponent(jtf_dispPermitido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel13)
+                    .addComponent(jtf_imei1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jtf_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jtf_nomeMobile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel16)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton7))
+                    .addComponent(jb_sair2)
+                    .addComponent(jb_salvar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -426,39 +420,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jtb_tabelaMobile.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/refresh.png"));
-        jButton3.setText("Atualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jb_atualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jb_atualizar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/arrow_refresh.png"));
+        jb_atualizar.setText("Atualizar");
+        jb_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jb_atualizarActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/menu_16.png"));
-        jButton4.setText("Detalhar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jb_detalhar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jb_detalhar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/page_edit.png"));
+        jb_detalhar.setText("Detalhar");
+        jb_detalhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jb_detalharActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/door_in.png"));
-        jButton6.setText("Sair");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jb_sair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jb_sair.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/door_in.png"));
+        jb_sair.setText("Sair");
+        jb_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jb_sairActionPerformed(evt);
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/door_in.png"));
-        jButton8.setText("Excluir");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jb_excluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jb_excluir.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/cancelar_16x16.png"));
+        jb_excluir.setText("Excluir");
+        jb_excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jb_excluirActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -470,31 +471,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_atualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)
+                        .addComponent(jb_excluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(jb_detalhar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)))
+                        .addComponent(jb_sair)))
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4, jButton6, jButton8});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jb_atualizar, jb_detalhar, jb_excluir, jb_sair});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6)
-                    .addComponent(jButton8))
+                    .addComponent(jb_detalhar)
+                    .addComponent(jb_atualizar)
+                    .addComponent(jb_sair)
+                    .addComponent(jb_excluir)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -649,12 +653,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jb_sair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_sair2ActionPerformed
         jd_dispositivo.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jb_sair2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        int numAtivo = mobileControle.getTotalMobileAtivo();
+    private void jb_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_salvarActionPerformed
+        int numAtivo = mobileControle.getTotalMobileAtivo(mobileTemp.getEmpresa().getId());
         if (jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).equals("INATIVO")) {
             salvar();
         } else {
@@ -664,26 +668,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 salvar();
             }
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jb_salvarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jb_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_atualizarActionPerformed
         BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId());
         SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getCnpj(), balcaoConfig));
         jtf_codInstalacao.setText(balcaoConfig == null ? "" : balcaoConfig.getSerial());
         atualizaTabela();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jb_atualizarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jb_detalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_detalharActionPerformed
         detalhar();
 //        System.out.println(listMobile.get(jtb_tabelaMobile.getSelectedRow()) + "");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jb_detalharActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jb_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_sairActionPerformed
         if (balcaoSysTray == null) {
             balcaoSysTray = new BalcaoSysTray();
         }
         this.setVisible(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jb_sairActionPerformed
 
     private void jbtn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_registrarActionPerformed
         registrar();
@@ -696,17 +700,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jb_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_excluirActionPerformed
         excluir();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jb_excluirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null, SessaoAberta.getQntMobilePermitida() + "\n" + mobileControle.getTotalMobileAtivo(jcb_empresa1.getSelectedIndex() + 1));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -731,6 +734,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jb_atualizar;
+    private javax.swing.JButton jb_detalhar;
+    private javax.swing.JButton jb_excluir;
+    private javax.swing.JButton jb_sair;
+    private javax.swing.JButton jb_sair2;
+    private javax.swing.JButton jb_salvar;
     private javax.swing.JButton jbtn_registrar;
     private javax.swing.JComboBox<String> jcb_empresa1;
     private javax.swing.JDialog jd_dispositivo;

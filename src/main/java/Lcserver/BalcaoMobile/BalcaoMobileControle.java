@@ -5,10 +5,13 @@
  */
 package Lcserver.BalcaoMobile;
 
+import Lcserver.Configuracao.BalcaoConfig;
+import Lcserver.Configuracao.BalcaoConfigDao;
 import Lcserver.Empresa.Empresa;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import Lcserver.Exception.NotFoundException;
 import SessaoAberta.SessaoAberta;
+import Util.Funcoes;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +25,17 @@ public class BalcaoMobileControle {
 
     @Autowired
     private BalcaoMobileDao mobileDao;
+    @Autowired
+    private BalcaoConfigDao balcaoConfigDao;
 
-    public BalcaoMobile validaAndroid(String imei) {
-        BalcaoMobile mobile = mobileDao.findByImeiLike(imei);
+    public BalcaoMobile validaAndroid(String imei, Integer idEmpresa) {
+
+        BalcaoMobile mobile = mobileDao.findByImeiAndIdEmpresa(imei, idEmpresa);
         if (mobile == null) {
             throw new PermissaoInsuficienteException("Dispositivo não encontrado na base de dados, cadastre-o no servidor!");
         }
         if (mobile.getStatus().equals("ATIVO")) {
-            int numOnline = mobileDao.getTotalMobileAtivo();
+            int numOnline = mobileDao.getTotalMobileAtivo(mobile.getEmpresa().getId());
             if (mobile.getStatus().equals("ATIVO")) {
                 if (SessaoAberta.getQntMobilePermitida() == 0 || numOnline > SessaoAberta.getQntMobilePermitida()) {
                     mobile.setStatus("INATIVO");
@@ -44,6 +50,7 @@ public class BalcaoMobileControle {
     }
 
     public BalcaoMobile cadastrarMobile(Empresa empresa, String imei, String usuario) {
+//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfigDao.getBalcaoConfigById(empresa.getId())));
         BalcaoMobile mobile = mobileDao.findByImeiAndIdEmpresa(imei, empresa.getId());
         if (mobile == null) {
             mobile = new BalcaoMobile();
@@ -52,9 +59,15 @@ public class BalcaoMobileControle {
             mobile.setUsuario(usuario);
             mobile.setStatus("INATIVO");
         } else if (!mobile.getStatus().equals("INATIVO")) {
-            int numAtivo = mobileDao.getTotalMobileAtivo();
+            int numAtivo = mobileDao.getTotalMobileAtivo(empresa.getId());
+//            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfigDao.getBalcaoConfigById(empresa.getId())));
+            System.out.println("---------------------------------------");
+            System.out.println("Empresa: " + empresa.getId());
+            System.out.println(numAtivo);
+            System.out.println(SessaoAberta.getQntMobilePermitida());
+            System.out.println("---------------------------------------");
             if (numAtivo > SessaoAberta.getQntMobilePermitida()) {
-                mobile.setStatus("INATIVO");
+//                mobile.setStatus("INATIVO");
             }
         }
         mobile.setUsuario(usuario);
@@ -86,8 +99,8 @@ public class BalcaoMobileControle {
         return balcaoMobile;
     }
 
-    public int getTotalMobileAtivo() {
-        return mobileDao.getTotalMobileAtivo();
+    public int getTotalMobileAtivo(Integer idEmpresa) {
+        return mobileDao.getTotalMobileAtivo(idEmpresa);
     }
 
 }

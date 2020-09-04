@@ -40,6 +40,6 @@ public interface BalcaoDao extends JpaRepository<Balcao, Integer> {
     public Balcao save(Balcao balcao) throws OperacaoInvalidaException;
 
     @Query(value = "select b from Balcao b WHERE b.id like str(?1) and b.empresa.id = ?2 and b.status!='PF' and b.status!='EX' order by b.id desc")
-    public Optional<Balcao> getBalcaoById(Integer id, Integer idEmpresa);
+    public Balcao getBalcaoByIdByIdEmpresa(Integer id, Integer idEmpresa);
 
 }

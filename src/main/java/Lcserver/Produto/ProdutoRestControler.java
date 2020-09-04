@@ -46,11 +46,11 @@ public class ProdutoRestControler {
         return produto;
     }
 
-    @GetMapping("/{nome}/{descricao}/{cod}/{fabricante}/{referencia}/{imei}")
+    @GetMapping("empresas/{idEmpresa}/{nome}/{descricao}/{cod}/{fabricante}/{referencia}/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Produto> getProdutoByDetalhado(@PathVariable String nome, @PathVariable String descricao, @PathVariable String cod, @PathVariable String fabricante, @PathVariable String referencia, @PathVariable String imei) {
+    public List<Produto> getProdutoByDetalhado(@PathVariable Integer idEmpresa, @PathVariable String nome, @PathVariable String descricao, @PathVariable String cod, @PathVariable String fabricante, @PathVariable String referencia, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getProdutoByDetalhado");
-        BalcaoMobile mobile = mobileControle.validaAndroid(imei);
+        BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário Inativo! Ative-o no Servidor!");
@@ -62,11 +62,11 @@ public class ProdutoRestControler {
         return listProd;
     }
 
-    @GetMapping("/{cod}/{imei}")
+    @GetMapping("/empresas/{idEmpresa}/{cod}/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public Produto getProdutoCod(@PathVariable String cod, @PathVariable String imei) {
+    public Produto getProdutoCod(@PathVariable Integer idEmpresa, @PathVariable String cod, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getProdutoCod");
-        BalcaoMobile mobile = mobileControle.validaAndroid(imei);
+        BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário Inativo! Ative-o no Servidor!");

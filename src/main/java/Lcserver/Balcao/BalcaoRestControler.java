@@ -91,10 +91,10 @@ public class BalcaoRestControler {
      */
     @PostMapping("/empresas/{idEmpresa}/balcoes/")
     @ResponseStatus(HttpStatus.CREATED)
-    public Integer salvarBalcao(@RequestBody Balcao balcao, @RequestHeader HttpHeaders headers) {
+    public Integer salvarBalcao(@PathVariable Integer idEmpresa, @RequestBody Balcao balcao, @RequestHeader HttpHeaders headers) {
         TelaPrincipal.TelaPrincipal.setLog("/salvarBalcao");
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
-        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0));
+        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0), idEmpresa);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
         mobile.validate();
@@ -111,7 +111,7 @@ public class BalcaoRestControler {
     public Integer salvarBalcao(@PathVariable Integer idEmpresa, @RequestBody BalcaoNewDtoInput balcaoNewDtoInput, @RequestHeader HttpHeaders headers) {
         TelaPrincipal.TelaPrincipal.setLog("/salvarBalcao");
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
-        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0));
+        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0), idEmpresa);
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         if (mobile.validate() && balcaoNewDtoInput.validate(usuario)) {
@@ -123,9 +123,9 @@ public class BalcaoRestControler {
 
     @PostMapping("/empresas/{idEmpresa}/balcoes/deletar/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String delete(@PathVariable Integer id, @RequestHeader HttpHeaders headers) {
+    public String delete(@PathVariable Integer idEmpresa, @PathVariable Integer id, @RequestHeader HttpHeaders headers) {
         TelaPrincipal.TelaPrincipal.setLog("/deletar OC: " + id);
-        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0));
+        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0), idEmpresa);
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
         TelaPrincipal.TelaPrincipal.atualizaTabela();

@@ -29,8 +29,8 @@ public interface BalcaoMobileDao extends JpaRepository<BalcaoMobile, Integer> {
     @Query(value = "select * from Balcaomobile b WHERE b.id_empresa like ?1", nativeQuery = true)
     public List<BalcaoMobile> findByIdEmpresaLike(String idEmpresa);
 
-    @Query(value = "select count(id) from balcaomobile m where m.status = 'ATIVO'", nativeQuery = true)
-    Integer getTotalMobileAtivo();
+    @Query(value = "select count(id) from balcaomobile m where m.id_empresa = ?1 and m.status = 'ATIVO'", nativeQuery = true)
+    Integer getTotalMobileAtivo(Integer idEmpresa);
 
     @Modifying
     @Transactional

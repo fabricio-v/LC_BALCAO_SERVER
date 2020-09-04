@@ -5,6 +5,7 @@ import Lcserver.Configuracao.BalcaoConfigDao;
 import Lcserver.Empresa.EmpresaRepository;
 import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
+import Lcserver.Configuracao.BalcaoConfig;
 import Lcserver.Configuracao.ConfigDao;
 import Lcserver.Empresa.Empresa;
 import Lcserver.Empresa.EmpresaController;
@@ -32,16 +33,17 @@ public class ApiwebApplication {
         TelaPrincipal tela = context.getBean(TelaPrincipal.class);
 
         try {
+            BalcaoConfigDao gfDao = context.getBean(BalcaoConfigDao.class);
             tela.abriTela(tela);
             EmpresaController ec = context.getBean(EmpresaController.class);
             tela.atualizaEmpresas((ArrayList<Empresa>) ec.getEmpresas());
             BalcaoMobileControle mc = context.getBean(BalcaoMobileControle.class);
             tela.atualizaTabela((ArrayList<BalcaoMobile>) mc.getListMobile());
-//            BalcaoConfigDao gfDao = context.getBean(BalcaoConfigDao.class);
+            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(tela.listEmpresa.get(0).getCnpj(), gfDao.getBalcaoConfigById(1)));
+            SessaoAberta.setCnpj(tela.listEmpresa.get(0).getCnpj());
 //            ConfigDao configDao = context.getBean(ConfigDao.class);
-//            SessaoAberta.setConfig(configDao.findAll().get(0));
-//            SessaoAberta.setCnpj(context.getBean(EmpresaRepository.class).findAll().get(0).getCnpj());
 //            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), gfDao.getBalcaoConfigById(Integer.SIZE)));
+//            SessaoAberta.setConfig(configDao.findAll().get(0));
         } catch (Exception ex) {
             ex.printStackTrace();
             tela.setErro("main", ex);

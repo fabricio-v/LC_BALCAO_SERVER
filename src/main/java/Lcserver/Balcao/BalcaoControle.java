@@ -57,12 +57,13 @@ public class BalcaoControle {
     }
 
     public Balcao getBalcao(Integer idEmpresa, Integer id) {
-        Optional<Balcao> balcao = balcaoDao.getBalcaoById(id, idEmpresa);
-        balcao.orElseThrow(() -> new NotFoundException("Orçamento nãoencontrado na base de dados!"));
-//        if (balcao == null) {
-//            throw new NaoExisteException("Orçamento Não Encontrado na Base de Dados!");
-//        }
-        return balcao.get();
+        Balcao balcao = balcaoDao.getBalcaoByIdByIdEmpresa(id, idEmpresa);
+//        Optional<Balcao> balcao = balcaoDao.getBalcaoByIdByIdEmpresa(id, idEmpresa);
+//        balcao.orElseThrow(() -> new NotFoundException("Orçamento nãoencontrado na base de dados!"));
+        if (balcao == null) {
+            throw new NotFoundException("Orçamento não encontrado na base de dados!");
+        }
+        return balcao;
     }
 
     @Transactional(rollbackFor = {NullPointerException.class, IllegalArgumentException.class, org.hibernate.exception.ConstraintViolationException.class})

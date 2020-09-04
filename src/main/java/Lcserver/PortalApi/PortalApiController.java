@@ -44,9 +44,9 @@ public class PortalApiController {
     private EstadosRepository estadosRepository;
 
     @ResponseBody
-    @GetMapping(value = "/consutaCnpjReceitaWs/{cpfCnpjConsulta}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<?> consultaEmpresaReceitaWs(@PathVariable(required = true) String cpfCnpjConsulta, @RequestHeader(required = true) String imei) {
-        TelaPrincipal.TelaPrincipal.setLogAndValidaImei("/consutaCnpjReceita", imei);
+    @GetMapping(value = "/empresas/{idEmpresa}/consutaCnpjReceitaWs/{cpfCnpjConsulta}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<?> consultaEmpresaReceitaWs(@PathVariable Integer idEmpresa, @PathVariable(required = true) String cpfCnpjConsulta, @RequestHeader(required = true) String imei) {
+        TelaPrincipal.TelaPrincipal.setLogAndValidaImei("/consutaCnpjReceita", imei, idEmpresa);
         Optional<Cliente> clienteByCpfCnpj = clienteRepository.getClienteByCpfCnpj(cpfCnpjConsulta);
         if (clienteRepository.getClienteByCpfCnpj(cpfCnpjConsulta).isPresent()) {
             return ResponseEntity.ok(new EmpresaBalcaoApiDtoInput(clienteByCpfCnpj.get()));

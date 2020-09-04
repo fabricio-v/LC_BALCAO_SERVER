@@ -59,8 +59,8 @@ public class UsuarioRestControler {
         if (u == null) {
             throw new NotFoundException("Usuário não Encontrado na Base de Dados!");
         }
-        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
-        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
+//        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
+//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
         BalcaoMobile mobile = mobileControle.cadastrarMobile(empresaService.getEmpresaById(idEmpresa), imei, u.getLogin());
         TelaPrincipal.TelaPrincipal.atualizaTabela();
 

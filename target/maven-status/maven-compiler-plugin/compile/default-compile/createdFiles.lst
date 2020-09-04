@@ -13,18 +13,17 @@ Lcserver\Produto\ProdutoDao.class
 Lcserver\Empresa\EmpresaController.class
 Lcserver\Empresa\EmpresaRepository.class
 Lcserver\PortalApi\dto\input\EmpresaBalcaoApiDtoInput.class
-Lcserver\Improssora\ImpressoraRestControler.class
 Lcserver\Exception\PermissaoInsuficienteException.class
 Lcserver\Mensagens\MsgTelaAtencao.class
 Lcserver\Pagamento\Pagamento.class
 Lcserver\Receber\Receber.class
 Lcserver\Balcao\Balcao.class
 Lcserver\Cliente\ClienteController.class
+Lcserver\Impressora\ImpressoraRestControler.class
 Lcserver\Fabricante\Fabricante.class
 Lcserver\TelaPrincipal$2.class
 Lcserver\Mensagens\msgTelaOK$3.class
 Lcserver\Configuracao\Config.class
-Lcserver\Improssora\BalcaoImpressao.class
 Lcserver\TelaPrincipal$8.class
 Lcserver\Categoria\Categoria.class
 Lcserver\Exception\NotFoundException.class
@@ -39,6 +38,7 @@ Util\Funcoes.class
 Lcserver\Produto\ProdutoRestControler.class
 Lcserver\TelaPrincipal$7.class
 Lcserver\PortalApi\PortalApiService.class
+Lcserver\Impressora\BalcaoImpressao.class
 Lcserver\EstadoCidade\Estados.class
 Lcserver\Mensagem\Mensagem.class
 Lcserver\Conexao\DatabaseConfig.class
@@ -48,7 +48,6 @@ Lcserver\ApiwebApplication.class
 Lcserver\Auditoria\Auditoria.class
 Lcserver\Mensagens\MsgTelaErro$1.class
 Lcserver\TelaPrincipal$6.class
-Lcserver\Improssora\ImpressoraLC.class
 Lcserver\Mensagens\msgTelaPergunta$5.class
 com\lcsistemas\lc\LCBalcao\ConstantesEnum\PaisesEstaticos.class
 Lcserver\Cliente\form\ClienteDebitoForm.class
@@ -57,9 +56,9 @@ Lcserver\Categoria\CategoriaControle.class
 Lcserver\EstadoCidade\CidadesRepository.class
 Lcserver\Exception\CredencialInvalidaException.class
 SessaoAberta\IndicadorIe.class
-Lcserver\Improssora\Impressora.class
 Lcserver\Usuario\UsuarioDao.class
 Lcserver\Mensagens\MsgTelaAtencao$3.class
+Lcserver\Impressora\ImpressoraLC.class
 Lcserver\Balcao\BalcaoDet.class
 Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.class
 Lcserver\Cliente\Cliente.class
@@ -67,6 +66,7 @@ Lcserver\Conexao\Database.class
 Lcserver\Configuracao\ConfigDao.class
 Lcserver\Produto\ProdutoControle.class
 Lcserver\Mensagens\MsgTelaErro$2.class
+Lcserver\Impressora\Impressora.class
 Lcserver\BalcaoSysTray.class
 Lcserver\PortalApi\PortalApiService$1.class
 Lcserver\Mensagens\msgTelaOK$2.class
@@ -85,7 +85,6 @@ Lcserver\Balcao\dto\Input\BalcaoDetNewDtoInput.class
 Lcserver\Balcao\dto\output\BalcaoDetDtoOutput.class
 Lcserver\Empresa\Empresa.class
 Lcserver\Balcao\BalcaoRecDao.class
-Lcserver\SpringConfig\Database\Database.class
 Lcserver\Balcao\dto\output\BalcaoDtoOutput.class
 Lcserver\Balcao\BalcaoRec.class
 Lcserver\Balcao\BalcaoDetDao.class
@@ -120,11 +119,11 @@ Lcserver\TelaPrincipal$4.class
 Lcserver\Exception\Erro.class
 Lcserver\Mensagens\msgTelaPergunta$2.class
 Lcserver\Pagamento\dto\output\PagamentoDtoOutput.class
+Lcserver\TelaPrincipal$10.class
 Lcserver\Mensagens\msgTelaOK$1.class
 Lcserver\Pagamento\PagamentoRepository.class
 Lcserver\Cliente\ClienteService.class
 Lcserver\Mensagens\msgTelaOK.class
-Lcserver\SpringConfig\Database\DatabaseConfig.class
 Lcserver\Cliente\dto\output\ClienteDtoOutput.class
 Lcserver\Unidade\UnidadeDao.class
 Lcserver\Balcao\dto\output\BalcaoListDtoOutput.class
