@@ -5,14 +5,18 @@
  */
 package Lcserver.BalcaoMobile;
 
+import Lcserver.Empresa.Empresa;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.springframework.util.StringUtils;
@@ -31,6 +35,12 @@ public class BalcaoMobile implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+//    @Basic(optional = false)
+//    @Column(name = "id_empresa")
+//    private Integer idEmpresa;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id", nullable = false)
+    private Empresa empresa;
     @Basic(optional = false)
     @Column(name = "imei")
     private String imei;
@@ -60,6 +70,22 @@ public class BalcaoMobile implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+//    public Integer getIdEmpresa() {
+//        return idEmpresa;
+//    }
+//
+//    public void setIdEmpresa(Integer idEmpresa) {
+//        this.idEmpresa = idEmpresa;
+//    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public String getImei() {

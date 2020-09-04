@@ -48,9 +48,9 @@ public class BalcaoDet implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco")
     private Double preco;
-    @Size(max = 10)
-    @Column(name = "desc_tipo")
-    private String descTipo;
+//    @Size(max = 10)
+//    @Column(name = "desc_tipo")
+//    private String descTipo;
     @Size(max = 1)
     @Column(name = "desc_forma")
     private String descForma;
@@ -70,13 +70,13 @@ public class BalcaoDet implements Serializable {
 
     public BalcaoDet() {
         this.idLote = 0;
-        this.descTipo = "Desconto";
+//        this.descTipo = "Desconto";
     }
 
     public BalcaoDet(Integer id) {
         this.id = id;
         this.idLote = 0;
-        this.descTipo = "Desconto";
+//        this.descTipo = "Desconto";
     }
 
     public Integer getId() {
@@ -127,13 +127,13 @@ public class BalcaoDet implements Serializable {
         this.preco = preco;
     }
 
-    public String getDescTipo() {
-        return descTipo;
-    }
-
-    public void setDescTipo(String descTipo) {
-        this.descTipo = descTipo;
-    }
+//    public String getDescTipo() {
+//        return descTipo;
+//    }
+//
+//    public void setDescTipo(String descTipo) {
+//        this.descTipo = descTipo;
+//    }
 
     public String getDescForma() {
         return descForma;

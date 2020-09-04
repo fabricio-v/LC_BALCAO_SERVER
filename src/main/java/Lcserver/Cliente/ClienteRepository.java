@@ -22,10 +22,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     @Query(value = "select now() as data", nativeQuery = true)
     Date getDataServer();
     
-    @Query(value = "select * from cliente where (id like ?1 or cpf_cnpj like ?2 or razao_social like ?2 or nome like ?2 or apelido_adi like ?2) and id>2 and ativo = 1 order by nome limit 20", nativeQuery = true)
+    @Query(value = "select * from Cliente where (id like ?1 or cpf_cnpj like ?2 or razao_social like ?2 or nome like ?2 or apelido_adi like ?2) and id>2 and ativo = 1 order by nome limit 20", nativeQuery = true)
     List<Cliente> getClienteDetalhado(String id, String nome);
     
-    @Query(value = "select * from cliente where numero_cartao like ?1 and ativo = 1 limit 20", nativeQuery = true)
+    @Query(value = "select * from Cliente where numero_cartao like ?1 and ativo = 1 limit 20", nativeQuery = true)
     Cliente getClienteCartao(String cartao);
     
     @Query(value = "select c from Cliente c where c.cpfCnpj like ?1")

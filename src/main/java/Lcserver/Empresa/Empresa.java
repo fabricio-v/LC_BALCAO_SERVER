@@ -34,57 +34,75 @@ public class Empresa implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Size(max = 60)
     @Column(name = "fantasia")
     private String fantasia;
+    
     @Size(max = 60)
     @Column(name = "razao_social")
     private String razaoSocial;
+    
     @Size(max = 18)
     @Column(name = "cnpj")
     private String cnpj;
+    
     @Size(max = 15)
     @Column(name = "ie")
     private String ie;
+    
     @Size(max = 15)
     @Column(name = "im")
     private String im;
+  
     @Size(max = 80)
     @Column(name = "endereco")
     private String endereco;
+ 
     @Size(max = 10)
     @Column(name = "numero")
     private String numero;
+ 
     @Size(max = 13)
-    @Column(name = "telefone")
+    @Column(name = "telefone")  
     private String telefone;
+    
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 50)
     @Column(name = "email")
     private String email;
+  
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "juros_diario")
     private Double jurosDiario;
+  
     @Column(name = "multa")
     private Double multa;
+  
     @Size(max = 20)
     @Column(name = "bairro")
     private String bairro;
+ 
     @Size(max = 10)
     @Column(name = "cep")
     private String cep;
+  
     @Size(max = 3)
     @Column(name = "crt")
     private String crt;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_estados", nullable = false)
     private Estados estado;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cidades")
     private Cidades cidade;
+    
     @Size(max = 2)
     @Column(name = "ativo")
     private String ativo;
+    
     @Size(max = 8)
     @Column(name = "cnae")
     private String cnae;

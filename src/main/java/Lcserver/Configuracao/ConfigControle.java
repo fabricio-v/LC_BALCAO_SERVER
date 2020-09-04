@@ -14,11 +14,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ConfigControle {
+
     @Autowired
     ConfigDao configDao;
-    
-    public Config getConfig(){
-        return configDao.findById(1).get();
+
+    public Config getConfigByIdEmpresa(Integer idEmpresa) {
+        return configDao.getConfigByIdEmpresa(idEmpresa);
     }
-    
+
 }

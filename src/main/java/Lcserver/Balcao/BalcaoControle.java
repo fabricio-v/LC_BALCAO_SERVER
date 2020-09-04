@@ -38,15 +38,15 @@ public class BalcaoControle {
         return balcaoDao.save(balcao);
     }
 
-    public List<Balcao> getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(String nome) {
-        List<Balcao> list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", "%", new PageRequest(0, 100));
+    public List<Balcao> getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(Integer idEmpresa, String nome) {
+        List<Balcao> list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", "%", idEmpresa, new PageRequest(0, 100));
         return list;
     }
 
-    public List<Balcao> getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(String nome, int id_usuario) {
+    public List<Balcao> getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(Integer idEmpresa, String nome, int id_usuario) {
         List<Balcao> list;
         //if (id_usuario == 0) {
-        list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", (id_usuario == 0 ? "%" : String.valueOf(id_usuario)), new PageRequest(0, 100));
+        list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", (id_usuario == 0 ? "%" : String.valueOf(id_usuario)), idEmpresa, new PageRequest(0, 100));
         // } else {
         //      list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", String.valueOf(id_usuario), new PageRequest(0, 100));
         // }
@@ -56,8 +56,8 @@ public class BalcaoControle {
         return list;
     }
 
-    public Balcao getBalcao(Integer id) {
-        Optional<Balcao> balcao = balcaoDao.findById(id);
+    public Balcao getBalcao(Integer idEmpresa, Integer id) {
+        Optional<Balcao> balcao = balcaoDao.getBalcaoById(id, idEmpresa);
         balcao.orElseThrow(() -> new NotFoundException("Orçamento nãoencontrado na base de dados!"));
 //        if (balcao == null) {
 //            throw new NaoExisteException("Orçamento Não Encontrado na Base de Dados!");
@@ -68,7 +68,7 @@ public class BalcaoControle {
     @Transactional(rollbackFor = {NullPointerException.class, IllegalArgumentException.class, org.hibernate.exception.ConstraintViolationException.class})
     public void delete(Usuario usuario, Integer idBalcao) {
         Balcao balcao = balcaoDao.getOne(idBalcao);
-                
+
         if (balcao.getStatus().equals("OC") && !usuario.getPermissoes().contains("BALCAO_EXCLUIR")) {
             throw new PermissaoInsuficienteException(usuario.getLogin() + ", você não tem permissão para esta operação!");
         }

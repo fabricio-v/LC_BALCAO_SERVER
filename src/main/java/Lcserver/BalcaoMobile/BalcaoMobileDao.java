@@ -5,6 +5,7 @@
  */
 package Lcserver.BalcaoMobile;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,9 +19,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface BalcaoMobileDao extends JpaRepository<BalcaoMobile, Integer> {
 
-   // @Query(value = "select * from mobile c where c.status = 'ONLINE'", nativeQuery = true)
+    // @Query(value = "select * from mobile c where c.status = 'ONLINE'", nativeQuery = true)
     //Mobile getMobile(String imei);
     BalcaoMobile findByImeiLike(String imei);
+
+    @Query(value = "select * from Balcaomobile b WHERE b.imei like ?1 and b.id_empresa = ?2", nativeQuery = true)
+    BalcaoMobile findByImeiAndIdEmpresa(String imei, Integer idEmpresa);
+
+    @Query(value = "select * from Balcaomobile b WHERE b.id_empresa like ?1", nativeQuery = true)
+    public List<BalcaoMobile> findByIdEmpresaLike(String idEmpresa);
 
     @Query(value = "select count(id) from balcaomobile m where m.status = 'ATIVO'", nativeQuery = true)
     Integer getTotalMobileAtivo();

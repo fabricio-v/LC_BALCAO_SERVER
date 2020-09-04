@@ -135,13 +135,19 @@ public class Produto implements Serializable {
     //    private Double ipi;
     @Column(name = "preco_promocao")
     private Double precoPromocao;
-    @Column(name = "data_promocao")
-    @Temporal(TemporalType.DATE)
-    private Date dataPromocao;
+    
+    @Column(name = "data_promocaoinicial")
+    @Temporal(TemporalType.DATE)    
+    private Date dataPromocaoInicial;
+    
+    @Column(name = "data_promocaofinal")
+    @Temporal(TemporalType.DATE)    
+    private Date dataPromocaoFinal;
+    
     @Column(name = "comissao")
     private Double comissao;
-    @Column(name = "estoque")
-    private Double estoque;
+//    @Column(name = "estoque")
+//    private Double estoque;
     @Column(name = "estoque_minimo")
     private Double estoqueMinimo;
     @Column(name = "estoque_max")
@@ -465,12 +471,20 @@ public class Produto implements Serializable {
         this.precoPromocao = precoPromocao;
     }
 
-    public Date getDataPromocao() {
-        return dataPromocao;
+    public Date getDataPromocaoInicial() {
+        return dataPromocaoInicial;
     }
 
-    public void setDataPromocao(Date dataPromocao) {
-        this.dataPromocao = dataPromocao;
+    public void setDataPromocaoInicial(Date dataPromocaoInicial) {
+        this.dataPromocaoInicial = dataPromocaoInicial;
+    }
+
+    public Date getDataPromocaoFinal() {
+        return dataPromocaoFinal;
+    }
+
+    public void setDataPromocaoFinal(Date dataPromocaoFinal) {
+        this.dataPromocaoFinal = dataPromocaoFinal;
     }
 
     public Double getComissao() {
@@ -480,14 +494,14 @@ public class Produto implements Serializable {
     public void setComissao(Double comissao) {
         this.comissao = comissao;
     }
-
-    public Double getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Double estoque) {
-        this.estoque = estoque;
-    }
+//
+//    public Double getEstoque() {
+//        return estoque;
+//    }
+//
+//    public void setEstoque(Double estoque) {
+//        this.estoque = estoque;
+//    }
 
     public Double getEstoqueMinimo() {
         return estoqueMinimo;

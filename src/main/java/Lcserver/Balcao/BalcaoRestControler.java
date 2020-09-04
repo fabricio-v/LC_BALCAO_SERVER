@@ -11,6 +11,8 @@ import Lcserver.Balcao.dto.output.BalcaoListDtoOutput;
 import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
 import Lcserver.Cliente.ClienteService;
+import Lcserver.Empresa.Empresa;
+import Lcserver.Empresa.EmpresaController;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import Lcserver.Exception.OperacaoInvalidaException;
 import Lcserver.TelaPrincipal;
@@ -28,7 +30,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,8 +44,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author JORDAN QUEIROGA
  */
 @RestController
-@RequestMapping(value = "",
-        produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
         consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class BalcaoRestControler {
 
@@ -60,25 +60,27 @@ public class BalcaoRestControler {
     private UsuarioControle usuarioControle;
     @Autowired
     private ClienteService clienteControle;
+    @Autowired
+    private EmpresaController empresaControle;
 
-    @GetMapping("/empresas/{idEmpresa}/balcoes/clientes/{nome}")//?cliente=sdpmfkmsp%sdpkfsd
+    @GetMapping("/empresas/{idEmpresa}/balcoes/clientes/{nome}")
     @ResponseStatus(HttpStatus.OK)
-    public List<BalcaoListDtoOutput> pesquisaSimplesBalcaoCodCliente(@PathVariable String nome, @RequestHeader HttpHeaders headers) {
+    public List<BalcaoListDtoOutput> pesquisaSimplesBalcaoCodCliente(@PathVariable Integer idEmpresa, @PathVariable String nome, @RequestHeader HttpHeaders headers) {
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         TelaPrincipal.TelaPrincipal.setLog("/balcoes/clientes/" + nome, usuario);
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
         Integer id_usuario = usuario.getPermissoes().contains("BALCAO_PESQUISAR_ATENDIMENTOS_TODOS_USUARIOS") ? 0 : usuario.getId();
-        List<Balcao> list = balcaoControle.getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(nome, id_usuario);
+        List<Balcao> list = balcaoControle.getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(idEmpresa, nome, id_usuario);
         return list.stream().map(BalcaoListDtoOutput::new).collect(Collectors.toList());
     }
 
     @GetMapping("/empresas/{idEmpresa}/balcoes/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BalcaoDtoOutput getBalcaoById(@PathVariable Integer id, @RequestHeader HttpHeaders headers) {
+    public BalcaoDtoOutput getBalcaoById(@PathVariable Integer idEmpresa, @PathVariable Integer id, @RequestHeader HttpHeaders headers) {
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         TelaPrincipal.TelaPrincipal.setLog("balcoes/ " + id, usuario);
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
-        BalcaoDtoOutput balcaoDtoOutput = new BalcaoDtoOutput(balcaoControle.getBalcao(id), clienteControle);
+        BalcaoDtoOutput balcaoDtoOutput = new BalcaoDtoOutput(balcaoControle.getBalcao(idEmpresa, id), clienteControle);
         return balcaoDtoOutput;
     }
 
@@ -87,7 +89,7 @@ public class BalcaoRestControler {
      * @param headers
      * @return
      */
-    @PostMapping()
+    @PostMapping("/empresas/{idEmpresa}/balcoes/")
     @ResponseStatus(HttpStatus.CREATED)
     public Integer salvarBalcao(@RequestBody Balcao balcao, @RequestHeader HttpHeaders headers) {
         TelaPrincipal.TelaPrincipal.setLog("/salvarBalcao");
@@ -103,23 +105,38 @@ public class BalcaoRestControler {
         return balcao.getId();
     }
 
-    //@PostMapping( "/empresas/{idEmpresa}/balcoes/salvar" )
-    @PostMapping( "/empresas/{idEmpresa}/balcoes" )
+    @PostMapping("/empresas/{idEmpresa}/balcoes/salvar")
     @ResponseStatus(HttpStatus.CREATED)
-    @Transactional( isolation = Isolation.READ_COMMITTED,rollbackFor = {OperacaoInvalidaException.class, NullPointerException.class, IllegalArgumentException.class})
-    public Integer salvarBalcao(@RequestBody BalcaoNewDtoInput balcaoNewDtoInput, @RequestHeader HttpHeaders headers) {
+    @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = {OperacaoInvalidaException.class, NullPointerException.class, IllegalArgumentException.class})
+    public Integer salvarBalcao(@PathVariable Integer idEmpresa, @RequestBody BalcaoNewDtoInput balcaoNewDtoInput, @RequestHeader HttpHeaders headers) {
         TelaPrincipal.TelaPrincipal.setLog("/salvarBalcao");
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0));
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
         TelaPrincipal.TelaPrincipal.atualizaTabela();
         if (mobile.validate() && balcaoNewDtoInput.validate(usuario)) {
-            Balcao balcao = balcaoControle.inserir(balcaoNewDtoInput.build(usuario, balcaoNewDtoInput, balcaoDao));
+            Balcao balcao = balcaoControle.inserir(balcaoNewDtoInput.build(new Empresa(idEmpresa), usuario, balcaoNewDtoInput, balcaoDao));
             return balcao.getId();
         }
         return null;
     }
 
+    @PostMapping("/empresas/{idEmpresa}/balcoes/deletar/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String delete(@PathVariable Integer id, @RequestHeader HttpHeaders headers) {
+        TelaPrincipal.TelaPrincipal.setLog("/deletar OC: " + id);
+        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0));
+        Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
+        usuario = usuarioControle.getUsuarioAtivoValida(usuario);
+        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        //Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
+        if (mobile.getStatus().equals("INATIVO")) {
+            throw new PermissaoInsuficienteException();
+        }
+        balcaoControle.delete(usuario, id);
+        String value = "{\"value\":\"Orçamento excluido com sucesso\"}";
+        return value;
+    }
 //    @Deprecated
 //    @DeleteMapping("/{id}")
 //    @ResponseStatus(HttpStatus.OK)
@@ -137,22 +154,5 @@ public class BalcaoRestControler {
 //        balcaoControle.delete(id);
 //        return null;
 //    }
-    //@PostMapping("/deletar/{id}")
-    @DeleteMapping("/balcoes/deletar/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public String delete(@PathVariable Integer id, @RequestHeader HttpHeaders headers) {
-        TelaPrincipal.TelaPrincipal.setLog("/deletar OC: " + id);
-        BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0));
-        Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
-        usuario = usuarioControle.getUsuarioAtivoValida(usuario);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
-        //Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
-        if (mobile.getStatus().equals("INATIVO")) {
-            throw new PermissaoInsuficienteException();
-        }
-        balcaoControle.delete(usuario, id);
-        String value = "{\"value\":\"Orçamento excluido com sucesso\"}";
-        return value;
-    }
 
 }

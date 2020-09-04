@@ -9,6 +9,9 @@ import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
 import Lcserver.Configuracao.BalcaoConfig;
 import Lcserver.Configuracao.BalcaoConfigDao;
+import Lcserver.Empresa.Empresa;
+import Lcserver.Empresa.EmpresaController;
+import Lcserver.Empresa.EmpresaService;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import Lcserver.Exception.NotFoundException;
 import Lcserver.TelaPrincipal;
@@ -35,8 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author JORDAN QUEIROGA
  */
 @RestController
-@RequestMapping(value = "/usuarios",
-        produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
         consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UsuarioRestControler {
 
@@ -46,18 +48,20 @@ public class UsuarioRestControler {
     private BalcaoMobileControle mobileControle;
     @Autowired
     private BalcaoConfigDao balcaoConfigDao;
+    @Autowired
+    private EmpresaService empresaService;
 
-    @GetMapping("/{id}/{imei}")
+    @GetMapping("/empresas/{idEmpresa}/usuarios/{id}/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public Usuario getUsuario(@PathVariable Integer id, @PathVariable String imei) {
+    public Usuario getUsuario(@PathVariable Integer idEmpresa, @PathVariable Integer id, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("buscou usuario ID: " + id);
         Usuario u = usuarioControle.getUsuarioAtivo(id);
         if (u == null) {
             throw new NotFoundException("Usuário não Encontrado na Base de Dados!");
         }
-        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfig();
+        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
         SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
-        BalcaoMobile mobile = mobileControle.cadastrarMobile(imei, u.getLogin());
+        BalcaoMobile mobile = mobileControle.cadastrarMobile(empresaService.getEmpresaById(idEmpresa), imei, u.getLogin());
         TelaPrincipal.TelaPrincipal.atualizaTabela();
 
         if (!mobile.getStatus().equals("ATIVO")) {
@@ -66,9 +70,9 @@ public class UsuarioRestControler {
         return u;
     }
 
-    @PostMapping("/autenticacao/{imei}")
+    @PostMapping("/empresas/{idEmpresa}/usuarios/autenticacao/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public Usuario autenticacao(@RequestBody UsuarioDtoInput usuarioDtoInput, @PathVariable String imei) {
+    public Usuario autenticacao(@RequestBody UsuarioDtoInput usuarioDtoInput, @PathVariable String imei, @PathVariable Integer idEmpresa) {
         TelaPrincipal.TelaPrincipal.setLog("buscou usuario ID: " + usuarioDtoInput.getId());
         Usuario u = usuarioControle.getUsuarioAtivo(Integer.parseInt(usuarioDtoInput.getId()));
         if (u == null) {
@@ -76,9 +80,9 @@ public class UsuarioRestControler {
         } else if (!u.getSenha().equals(usuarioDtoInput.getSenha())) {
             throw new PermissaoInsuficienteException("Senha inválida!");
         }
-        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfig();
+        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
         SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
-        BalcaoMobile mobile = mobileControle.cadastrarMobile(imei, u.getLogin());
+        BalcaoMobile mobile = mobileControle.cadastrarMobile(empresaService.getEmpresaById(idEmpresa), imei, u.getLogin());
         TelaPrincipal.TelaPrincipal.atualizaTabela();
 
         if (!mobile.getStatus().equals("ATIVO")) {

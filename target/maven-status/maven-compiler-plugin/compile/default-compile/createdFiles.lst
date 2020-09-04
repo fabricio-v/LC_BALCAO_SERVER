@@ -39,9 +39,9 @@ Util\Funcoes.class
 Lcserver\Produto\ProdutoRestControler.class
 Lcserver\TelaPrincipal$7.class
 Lcserver\PortalApi\PortalApiService.class
-Lcserver\Pagamento\dto\Output\PagamentoDtoOutput.class
 Lcserver\EstadoCidade\Estados.class
 Lcserver\Mensagem\Mensagem.class
+Lcserver\Conexao\DatabaseConfig.class
 Lcserver\Unidade\Unidade.class
 Lcserver\Usuario\Funcao.class
 Lcserver\ApiwebApplication.class
@@ -63,6 +63,7 @@ Lcserver\Mensagens\MsgTelaAtencao$3.class
 Lcserver\Balcao\BalcaoDet.class
 Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.class
 Lcserver\Cliente\Cliente.class
+Lcserver\Conexao\Database.class
 Lcserver\Configuracao\ConfigDao.class
 Lcserver\Produto\ProdutoControle.class
 Lcserver\Mensagens\MsgTelaErro$2.class
@@ -79,12 +80,10 @@ Lcserver\Mensagens\MsgTelaAtencao$2.class
 Lcserver\Configuracao\ConfigControle.class
 Lcserver\PortalApi\PortalApiController.class
 Lcserver\Auditoria\AuditoriaRestControle.class
-Lcserver\TelaPrincipal$9.class
 Lcserver\Balcao\dto\Input\BalcaoDetNewDtoInput.class
 Lcserver\Balcao\dto\output\BalcaoDetDtoOutput.class
 Lcserver\Empresa\Empresa.class
 Lcserver\Balcao\BalcaoRecDao.class
-Lcserver\SpringConfig\Database\Database.class
 Lcserver\Balcao\dto\output\BalcaoDtoOutput.class
 Lcserver\Balcao\BalcaoRec.class
 Lcserver\Balcao\BalcaoDetDao.class
@@ -117,11 +116,11 @@ Lcserver\SpringConfig\SpringConfig.class
 Lcserver\TelaPrincipal$4.class
 Lcserver\Exception\Erro.class
 Lcserver\Mensagens\msgTelaPergunta$2.class
+Lcserver\Pagamento\dto\output\PagamentoDtoOutput.class
 Lcserver\Mensagens\msgTelaOK$1.class
 Lcserver\Pagamento\PagamentoRepository.class
 Lcserver\Cliente\ClienteService.class
 Lcserver\Mensagens\msgTelaOK.class
-Lcserver\SpringConfig\Database\DatabaseConfig.class
 Lcserver\Cliente\dto\output\ClienteDtoOutput.class
 Lcserver\Unidade\UnidadeDao.class
 Lcserver\Balcao\dto\output\BalcaoListDtoOutput.class

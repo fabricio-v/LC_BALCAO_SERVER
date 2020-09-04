@@ -5,9 +5,8 @@
  */
 package SessaoAberta;
 
+import Lcserver.Conexao.Database;
 import Lcserver.Configuracao.Config;
-import Lcserver.SpringConfig.Database.Database;
-import Lcserver.SpringConfig.Database.DatabaseConfig;
 
 /**
  *
@@ -15,16 +14,16 @@ import Lcserver.SpringConfig.Database.DatabaseConfig;
  */
 public class SessaoAberta {
 
-    public static final String versao = "v1.0.5 MOBILE";
+    public static final String versao = "v1.0.4 MOBILE";
     private static int qntMobilePermitida = 0;
     private static String cnpj = "";
     private static Config config;
-    private static Database database = new Database();
+    private static Database database;
 
     public static String getVersao() {
         return versao;
     }
-    
+
     public static int getQntMobilePermitida() {
         return qntMobilePermitida;
     }
@@ -57,5 +56,4 @@ public class SessaoAberta {
         SessaoAberta.database = database;
     }
 
-    
 }

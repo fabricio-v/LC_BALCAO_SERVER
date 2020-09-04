@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/empresas")
 public class EmpresaController {
-    
+
     @Autowired
     private EmpresaRepository empresaRepository;
-    
+
     @GetMapping
     public List<Empresa> getEmpresas() {
         return empresaRepository.findAll();
     }
 
-    
 }

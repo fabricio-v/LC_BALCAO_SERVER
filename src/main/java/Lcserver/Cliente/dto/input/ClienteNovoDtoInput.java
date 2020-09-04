@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.Optional;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
@@ -39,8 +38,8 @@ public class ClienteNovoDtoInput {
     @Size(min = 1, max = 1, message = "Tamanho do campo tipo inválido")
     @NotEmpty(message = "Tipo não pode ser vazio")
     private String tipo; //recebe J ou F
-    @Min(value = 1, message = "Informe um usuario com ID maior que um!")
-    @NotNull(message = "ID do usuário não pode ser vazio!")
+    //@Min(value = 1, message = "Informe um usuario com ID maior que um!")
+    //@NotEmpty(message = "ID do usuário não pode ser vazio!")
     private Integer idUsuario;
     private String ie;
     private Integer ieIdicador;
@@ -54,10 +53,14 @@ public class ClienteNovoDtoInput {
     private String nome;
     private String apelidoAdi;
     private String razaoSocial;
+//    @Size(min = 1, message = "Informe o endereço!")
     private String endereco;
+//    @Size(min = 1, message = "Informe o número!")
     private String numero;
     private String referencia;
+//    @Size(min = 8, message = "CEP inferior a 8(oito) caracteres!")
     private String cep;
+//    @Size(min = 1, message = "Informe o bairro!")
     private String bairro;
     @Size(min = 0, message = "Quantidade de caracteres do email inválido")
     private String email;
@@ -68,9 +71,10 @@ public class ClienteNovoDtoInput {
     @Size(min = 0, max = 14, message = "Quantidade de caracteres do celular inválido!")
     private String celular;
     private Integer idPais;
-    @NotNull(message = "Estado inválido, informe UF com dois caracteres!")
+//    @Size(min = 2, max = 2, message = "Estado inválido, informe UF com dois caracteres!")
     private Integer idEstado;
-    @NotNull(message = "Cidade inválida!")
+    //@NotEmpty
+    //@Size(min = 4, message = "Cidade inválida!")
     private Integer idCidade;
     private String ativo;
 
@@ -99,6 +103,7 @@ public class ClienteNovoDtoInput {
         if ((id == null || id == 0) && cliente.isPresent()) {
             msg += "Cliente já cadastrado no sistema!\n";
         }
+        System.out.println("usuario"+idUsuario);
         Usuario usuario = usuarioDao.getUsuarioAtivo(idUsuario);
         if (usuario == null) {
             msg += "Usuário não encontrado na base de dados!\n";
@@ -153,8 +158,8 @@ public class ClienteNovoDtoInput {
         c.setTelComercial(telefone2 == null ? "" : telefone2.replace(" ", ""));
         c.setFax(celular == null ? "" : celular.replace(" ", ""));
         c.setIdPais(idPais == null ? 34 : idPais);
-        c.setEstado(new Estados(idEstado == null ? 14 : idEstado));
         c.setCidade(new Cidades(idCidade == null ? 217 : idCidade));
+        c.setEstado(new Estados(idEstado == null ? 14 : idEstado));
         c.setReferencia(referencia);
         c.setAtivo(ativo);
         if (id == null || id == 0) {

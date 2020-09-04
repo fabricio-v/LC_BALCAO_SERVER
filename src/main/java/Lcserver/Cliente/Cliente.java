@@ -29,7 +29,8 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "cliente")
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -259,13 +260,13 @@ public class Cliente implements Serializable{
     private Integer avalistaIdcidade;
     @Column(name = "avalista_idestado")
     private Integer avalistaIdestado;
-   // @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    // @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_estado", nullable = false)
+    @JoinColumn(name = "id_estado", referencedColumnName = "id", nullable = false)
     private Estados estado;
-   // @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    // @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cidade", nullable = false)
+    @JoinColumn(name = "id_cidade", referencedColumnName = "id", nullable = false)
     private Cidades cidade;
 
 //    @Id

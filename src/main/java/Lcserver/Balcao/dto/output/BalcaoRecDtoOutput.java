@@ -6,7 +6,7 @@
 package Lcserver.Balcao.dto.output;
 
 import Lcserver.Balcao.BalcaoRec;
-import Lcserver.Pagamento.dto.Output.PagamentoDtoOutput;
+import Lcserver.Pagamento.dto.output.PagamentoDtoOutput;
 
 /**
  *

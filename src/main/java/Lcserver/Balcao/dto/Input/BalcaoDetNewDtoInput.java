@@ -33,7 +33,7 @@ public class BalcaoDetNewDtoInput {
         det.setPreco(balcaoDetDtoInput.getPreco());
         det.setQuantidade(balcaoDetDtoInput.getQuantidade());
         det.setTotal(balcaoDetDtoInput.getTotal());
-        det.setDescTipo("Desconto");
+//        det.setDescTipo("Desconto");
         det.setDesconto(balcaoDetDtoInput.getDesconto());
         det.setDescForma(balcaoDetDtoInput.getDescForma());
         det.setValorDesconto(balcaoDetDtoInput.getValorDesconto());

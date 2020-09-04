@@ -5,6 +5,7 @@
  */
 package Lcserver.BalcaoMobile;
 
+import Lcserver.Empresa.Empresa;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import Lcserver.Exception.NotFoundException;
 import SessaoAberta.SessaoAberta;
@@ -42,10 +43,11 @@ public class BalcaoMobileControle {
         return mobile;
     }
 
-    public BalcaoMobile cadastrarMobile(String imei, String usuario) {
-        BalcaoMobile mobile = mobileDao.findByImeiLike(imei);
+    public BalcaoMobile cadastrarMobile(Empresa empresa, String imei, String usuario) {
+        BalcaoMobile mobile = mobileDao.findByImeiAndIdEmpresa(imei, empresa.getId());
         if (mobile == null) {
             mobile = new BalcaoMobile();
+            mobile.setEmpresa(empresa);
             mobile.setImei(imei);
             mobile.setUsuario(usuario);
             mobile.setStatus("INATIVO");
@@ -64,14 +66,22 @@ public class BalcaoMobileControle {
         mobileDao.save(mobile);
     }
 
+    public void removerMobile(BalcaoMobile balcaoMobile) {
+        mobileDao.delete(balcaoMobile);
+    }
+
     public List<BalcaoMobile> getListMobile() {
         return mobileDao.findAll();
+    }
+
+    public List<BalcaoMobile> getListMobileByIdEmpresa(String idEmpresa) {
+        return mobileDao.findByIdEmpresaLike(idEmpresa);
     }
 
     public BalcaoMobile getMobile(String imei) {
         BalcaoMobile balcaoMobile = mobileDao.findByImeiLike(imei);
         if (balcaoMobile == null) {
-           throw new NotFoundException("Dispositivo Não Encontrado na Base de Dados!");
+            throw new NotFoundException("Dispositivo Não Encontrado na Base de Dados!");
         }
         return balcaoMobile;
     }

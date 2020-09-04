@@ -6,6 +6,8 @@ import Lcserver.Empresa.EmpresaRepository;
 import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
 import Lcserver.Configuracao.ConfigDao;
+import Lcserver.Empresa.Empresa;
+import Lcserver.Empresa.EmpresaController;
 import Lcserver.Mensagens.MsgTelaErro;
 import Lcserver.SpringConfig.SpringConfig;
 import SessaoAberta.SessaoAberta;
@@ -28,16 +30,18 @@ public class ApiwebApplication {
     public static void main(String[] args) {
         ApplicationContext context = new SpringApplicationBuilder(ApiwebApplication.class).headless(false).run(args);
         TelaPrincipal tela = context.getBean(TelaPrincipal.class);
-        
+
         try {
             tela.abriTela(tela);
+            EmpresaController ec = context.getBean(EmpresaController.class);
+            tela.atualizaEmpresas((ArrayList<Empresa>) ec.getEmpresas());
             BalcaoMobileControle mc = context.getBean(BalcaoMobileControle.class);
             tela.atualizaTabela((ArrayList<BalcaoMobile>) mc.getListMobile());
-            BalcaoConfigDao gfDao = context.getBean(BalcaoConfigDao.class);
-            ConfigDao configDao = context.getBean(ConfigDao.class);
-            SessaoAberta.setConfig(configDao.findAll().get(0));
-            SessaoAberta.setCnpj(context.getBean(EmpresaRepository.class).findAll().get(0).getCnpj());
-            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), gfDao.getBalcaoConfig()));
+//            BalcaoConfigDao gfDao = context.getBean(BalcaoConfigDao.class);
+//            ConfigDao configDao = context.getBean(ConfigDao.class);
+//            SessaoAberta.setConfig(configDao.findAll().get(0));
+//            SessaoAberta.setCnpj(context.getBean(EmpresaRepository.class).findAll().get(0).getCnpj());
+//            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), gfDao.getBalcaoConfigById(Integer.SIZE)));
         } catch (Exception ex) {
             ex.printStackTrace();
             tela.setErro("main", ex);

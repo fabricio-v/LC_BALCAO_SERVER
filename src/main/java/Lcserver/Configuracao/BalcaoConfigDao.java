@@ -16,7 +16,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BalcaoConfigDao extends JpaRepository<BalcaoConfig, Integer> {
 
-    @Query(value = "select * from balcaoconfig limit 1", nativeQuery = true)
-    BalcaoConfig getBalcaoConfig();
+//    @Query(value = "select * from balcaoconfig limit 1", nativeQuery = true)
+//    BalcaoConfig getBalcaoConfig();
+    
+    @Query(value = "select * from balcaoconfig where id = ?1", nativeQuery = true)
+    BalcaoConfig getBalcaoConfigById(Integer id);
 
 }

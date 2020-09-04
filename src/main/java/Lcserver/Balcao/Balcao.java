@@ -44,47 +44,64 @@ public class Balcao implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @NotNull
     @ManyToOne(optional = false, cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     private Empresa empresa;
+
     @JsonIgnoreProperties({"descontoPermitido", "descontoPermitidoCR", "obs", "permissoes", "empresa"})
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private Usuario usuario;
+
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Cliente cliente;
+
     @Column(name = "id_usuarioex")
     private Integer idUsuarioex;
+
     @Column(name = "id_balcaosb")
     private Integer idBalcaosb;
+
     @Column(name = "id_orcamento")
     private Integer idOrcamento;
+
     @Column(name = "data_hora")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")//, timezone = "GMT-3")
     private Date dataHora;
+
     @Column(name = "data_horaex")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")//, timezone = "GMT-3")
     private Date dataHoraex;
+
     @Column(name = "total")
     private Double total;
+
     @Column(name = "desc_tipo")
     private String descTipo;
+
     @Column(name = "desc_forma")
     private String descForma;
+
     @Column(name = "desconto")
     private Double desconto;
+
     @Column(name = "valor_desconto")
     private Double valorDesconto;
+
     @Column(name = "arredondamento")
     private Double arredondamento;
+
     @Column(name = "sub_total")
     private Double subTotal;
+
     @Column(name = "obs")
     private String obs;
+
     @Column(name = "status")
     private String status;
 

@@ -4,12 +4,10 @@ D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Util\Funcoe
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDetDao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\TelaPrincipal.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\SpringConfig\Database\DatabaseConfig.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioRestControler.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\ImpressoraLC.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\Auditoria.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\BalcaoImpressao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\SpringConfig\Database\Database.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoDao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\msgTelaOK.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\NotFoundException.java
@@ -22,6 +20,7 @@ D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Us
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobile.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaControle.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\DatabaseConfig.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigDao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRestControler.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\Empresa.java
@@ -78,6 +77,7 @@ D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Ba
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\Estados.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoControle.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteController.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\Database.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\EstadosRepository.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\dto\output\ClienteDtoOutput.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaControle.java

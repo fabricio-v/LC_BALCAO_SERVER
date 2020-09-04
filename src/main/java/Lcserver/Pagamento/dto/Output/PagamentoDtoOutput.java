@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lcserver.Pagamento.dto.Output;
+package Lcserver.Pagamento.dto.output;
 
 import Lcserver.Pagamento.Pagamento;
+import Lcserver.Produto.Produto;
 
 /**
  *

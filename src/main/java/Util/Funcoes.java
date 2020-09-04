@@ -5,9 +5,8 @@
  */
 package Util;
 
+import Lcserver.Conexao.Database;
 import Lcserver.Configuracao.BalcaoConfig;
-import Lcserver.Mensagens.MsgTelaAtencao;
-import Lcserver.SpringConfig.Database.Database;
 import Lcserver.Usuario.Usuario;
 import SessaoAberta.SessaoAberta;
 import java.io.BufferedReader;
@@ -310,5 +309,4 @@ public class Funcoes {
             return true;
         }
     }
-
 }

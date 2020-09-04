@@ -43,7 +43,7 @@ public class BalcaoNewDtoInput {
     public BalcaoNewDtoInput() {
     }
 
-    public static Balcao build(Usuario u, BalcaoNewDtoInput balcaoDtoNovo, BalcaoDao balcaoDao) {
+    public static Balcao build(Empresa e, Usuario u, BalcaoNewDtoInput balcaoDtoNovo, BalcaoDao balcaoDao) {
         Balcao balcao = new Balcao();
         balcao.setIdBalcaosb(0);
         balcao.setIdOrcamento(0);
@@ -57,6 +57,7 @@ public class BalcaoNewDtoInput {
         balcao.setId(balcaoDtoNovo.getId());
         balcao.setTotal(balcaoDtoNovo.getTotal());
         balcao.setSubTotal(balcaoDtoNovo.getSubTotal());
+        balcao.setEmpresa(new Empresa(e.getId()));
         balcao.setCliente(new Cliente(balcaoDtoNovo.getIdCliente()));
         balcao.setUsuario(new Usuario(u.getId()));
         balcao.setStatus(balcaoDtoNovo.getStatus());

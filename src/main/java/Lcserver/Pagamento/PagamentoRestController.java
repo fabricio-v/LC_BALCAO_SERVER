@@ -5,7 +5,7 @@
  */
 package Lcserver.Pagamento;
 
-import Lcserver.Pagamento.dto.Output.PagamentoDtoOutput;
+import Lcserver.Pagamento.dto.output.PagamentoDtoOutput;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;

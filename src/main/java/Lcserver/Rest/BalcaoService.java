@@ -17,6 +17,7 @@ import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
 import Lcserver.Configuracao.BalcaoConfig;
 import Lcserver.Configuracao.BalcaoConfigDao;
+import Lcserver.Empresa.Empresa;
 import Lcserver.Exception.ImpressaoErro;
 import Lcserver.Improssora.BalcaoImpressao;
 import Lcserver.Improssora.Impressora;
@@ -69,16 +70,16 @@ public class BalcaoService {
     @Autowired
     BalcaoConfigDao balcaoConfigDao;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getUsuario/{id}/{imei}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Usuario> getUsuario(@PathVariable Integer id, @PathVariable String imei) {
+    @RequestMapping(method = RequestMethod.GET, value = "/empresas/{idEmpresa}/getUsuario/{id}/{imei}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Usuario> getUsuario(@PathVariable Empresa empresa, @PathVariable Integer id, @PathVariable String imei) {
         telaPrincipal.setLog("buscou usuario ID: " + id);
         Usuario u = usuarioControle.getUsuarioAtivo(id);
         if (u == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfig();
+        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(empresa.getId());
         SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
-        BalcaoMobile mobile = mobileControle.cadastrarMobile(imei, u.getLogin());
+        BalcaoMobile mobile = mobileControle.cadastrarMobile(empresa, imei, u.getLogin());
         telaPrincipal.atualizaTabela();
         if (!mobile.getStatus().equals("ATIVO")) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -158,10 +159,10 @@ public class BalcaoService {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/pesquisaSimplesBalcaoCodCliente/{nome}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Balcao>> pesquisaSimplesBalcaoCodCliente(@PathVariable String nome) {
+    @RequestMapping(method = RequestMethod.GET, value = "/empresas/{idEmpresa}/pesquisaSimplesBalcaoCodCliente/{nome}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Balcao>> pesquisaSimplesBalcaoCodCliente(@PathVariable Integer idEmpresa, @PathVariable String nome) {
         telaPrincipal.setLog("/pesquisaSimplesBalcaoCodCliente: " + nome);
-        List<Balcao> list = balcaoControle.getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(nome);
+        List<Balcao> list = balcaoControle.getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(idEmpresa, nome);
         if (list == null || list.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -169,10 +170,10 @@ public class BalcaoService {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getBalcao/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Balcao> getBalcao(@PathVariable Integer id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/empresas/{idEmpresa}/getBalcao/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Balcao> getBalcao(@PathVariable Integer idEmpresa, @PathVariable Integer id) {
         telaPrincipal.setLog("/getBalcao: " + id);
-        Balcao balcao = balcaoControle.getBalcao(id);
+        Balcao balcao = balcaoControle.getBalcao(idEmpresa, id);
         if (balcao == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -205,7 +206,6 @@ public class BalcaoService {
 //            return new ResponseEntity<>(new Mensagem("Excluiu"), HttpStatus.OK);
 //        }
 //    }
-
     @RequestMapping(method = RequestMethod.POST, value = "/imprimir/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Mensagem> imprimir(@RequestBody Impressora i, @PathVariable Integer id) {
         telaPrincipal.setLog("/imprimir");
@@ -231,10 +231,10 @@ public class BalcaoService {
         return new ResponseEntity<>(new Mensagem(""), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getConfig", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Config> getConfig() {
+    @RequestMapping(method = RequestMethod.GET, value = "/empresas/{idEmpresa}/getConfig", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Config> getConfig(@PathVariable Integer idEmpresa) {
         telaPrincipal.setLog("/getConfig");
-        SessaoAberta.setConfig(configControle.getConfig());
+        SessaoAberta.setConfig(configControle.getConfigByIdEmpresa(idEmpresa));
         return new ResponseEntity<>(SessaoAberta.getConfig(), HttpStatus.OK);
     }
 }

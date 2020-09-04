@@ -63,8 +63,9 @@ public class ProdutoDtoOutput {
         this.qtdMinimapv4 = produto.getQtdMinimapv4();
         this.descontoMax4 = produto.getDescontoMax4();
         this.precoPromocao = produto.getPrecoPromocao();
-        this.dataPromocao = produto.getDataPromocao();
-        this.estoque = produto.getEstoque();
+        this.dataPromocao = produto.getDataPromocaoInicial();
+        this.dataPromocao = produto.getDataPromocaoFinal();
+//        this.estoque = produto.getEstoque();
 
     }
 
