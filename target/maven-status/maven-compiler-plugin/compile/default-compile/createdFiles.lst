@@ -80,10 +80,12 @@ Lcserver\Mensagens\MsgTelaAtencao$2.class
 Lcserver\Configuracao\ConfigControle.class
 Lcserver\PortalApi\PortalApiController.class
 Lcserver\Auditoria\AuditoriaRestControle.class
+Lcserver\TelaPrincipal$9.class
 Lcserver\Balcao\dto\Input\BalcaoDetNewDtoInput.class
 Lcserver\Balcao\dto\output\BalcaoDetDtoOutput.class
 Lcserver\Empresa\Empresa.class
 Lcserver\Balcao\BalcaoRecDao.class
+Lcserver\SpringConfig\Database\Database.class
 Lcserver\Balcao\dto\output\BalcaoDtoOutput.class
 Lcserver\Balcao\BalcaoRec.class
 Lcserver\Balcao\BalcaoDetDao.class
@@ -94,6 +96,7 @@ Lcserver\Mensagens\msgTelaPergunta$3.class
 Lcserver\Balcao\BalcaoDao.class
 Lcserver\Usuario\Usuario.class
 SessaoAberta\SessaoAberta.class
+Lcserver\Empresa\EmpresaService.class
 Lcserver\Exception\RestExceptionHandler.class
 Lcserver\Balcao\BalcaoRestControler.class
 Lcserver\PortalApi\dto\input\ErrorPortalApiDtoInput.class
@@ -121,6 +124,7 @@ Lcserver\Mensagens\msgTelaOK$1.class
 Lcserver\Pagamento\PagamentoRepository.class
 Lcserver\Cliente\ClienteService.class
 Lcserver\Mensagens\msgTelaOK.class
+Lcserver\SpringConfig\Database\DatabaseConfig.class
 Lcserver\Cliente\dto\output\ClienteDtoOutput.class
 Lcserver\Unidade\UnidadeDao.class
 Lcserver\Balcao\dto\output\BalcaoListDtoOutput.class

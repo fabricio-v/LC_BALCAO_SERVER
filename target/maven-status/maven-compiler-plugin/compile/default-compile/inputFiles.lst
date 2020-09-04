@@ -1,101 +1,104 @@
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobileControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\dto\output\EmpresaDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Util\FuncoesFormataTexto.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDetDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\TelaPrincipal.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioRestControler.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\ImpressoraLC.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\Auditoria.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\BalcaoImpressao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\msgTelaOK.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\NotFoundException.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\BalcaoConfigDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\RestExceptionHandler.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\form\ClienteDebitoForm.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Unidade\Unidade.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\dto\input\ClienteNovoDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\Funcao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobile.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\DatabaseConfig.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRestControler.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\Empresa.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\PortalApiController.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\dto\Output\PagamentoDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoSysTray.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\BalcaoConfig.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\Pagamento.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\dto\input\UsuarioDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDet.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\Impressora.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRec.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaRestControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\dto\output\UsuarioDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\SessaoAberta\PaisesEstaticos.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\msgTelaPergunta.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\Cliente.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\CredencialInvalidaException.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\PagamentoRepository.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\ImpressaoErro.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\PagamentoRestController.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Util\FuncoesCpfCnpj.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\OperacaoInvalidaException.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\ApiwebApplication.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoDetNewDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoRecDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Rest\BalcaoService.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\PermissaoInsuficienteException.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\dto\input\ErrorPortalApiDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Permissao\Permissao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Unidade\UnidadeDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\MsgTelaErro.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRecDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Receber\Receber.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Util\Funcoes.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\CidadesController.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\Config.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Fabricante\Fabricante.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\EmpresaController.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteRepository.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\PortalApiService.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoNewDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteService.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\Usuario.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\Erro.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\EmpresaRepository.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoRestControler.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\SessaoAberta\IndicadorIe.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoDetDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\Estados.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteController.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\Database.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\EstadosRepository.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\dto\output\ClienteDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\Categoria.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\Cidades.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigControle.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagem\Mensagem.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\dto\input\EmpresaBalcaoApiDtoInput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobileDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaSub.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaDao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\ImpressoraRestControler.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\MsgTelaAtencao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoListDtoOutput.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\CidadesRepository.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\SpringConfig\SpringConfig.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\SessaoAberta\SessaoAberta.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\Balcao.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\Produto.java
-D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Util\FuncoesFormataTexto.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\NotFoundException.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\EmpresaController.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\Cidades.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\dto\input\ClienteNovoDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\TelaPrincipal.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\ImpressoraRestControler.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Fabricante\Fabricante.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaRestControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\dto\Output\PagamentoDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\PagamentoRepository.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteService.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\EstadosRepository.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDetDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoNewDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobileControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\OperacaoInvalidaException.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\MsgTelaErro.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoListDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\CidadesController.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\Pagamento.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobileDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRec.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\Config.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\SpringConfig\Database\Database.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRecDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoDetDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\PermissaoInsuficienteException.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\DatabaseConfig.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\Auditoria.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\Impressora.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\Balcao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\Produto.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\ImpressoraLC.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteRepository.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDet.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\BalcaoConfigDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Permissao\Permissao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\msgTelaPergunta.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\dto\input\ErrorPortalApiDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Util\Funcoes.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Improssora\BalcaoImpressao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Receber\Receber.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\RestExceptionHandler.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\form\ClienteDebitoForm.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\SessaoAberta\PaisesEstaticos.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\Categoria.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\SessaoAberta\SessaoAberta.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoRestControler.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\MsgTelaAtencao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\PagamentoRestController.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\CredencialInvalidaException.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\SessaoAberta\IndicadorIe.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\dto\output\UsuarioDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Util\FuncoesCpfCnpj.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRestControler.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Unidade\UnidadeDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\Funcao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobile.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\Usuario.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\BalcaoConfig.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\ImpressaoErro.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\EmpresaRepository.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Unidade\Unidade.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\dto\input\EmpresaBalcaoApiDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\output\BalcaoRecDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\Erro.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\ApiwebApplication.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\CidadesRepository.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\Estados.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\Cliente.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\dto\Input\BalcaoDetNewDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Rest\BalcaoService.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\SpringConfig\Database\DatabaseConfig.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagem\Mensagem.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\SpringConfig\SpringConfig.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\dto\input\UsuarioDtoInput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoSysTray.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaSub.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\Database.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\dto\output\EmpresaDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\dto\output\ClienteDtoOutput.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\EmpresaService.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\ClienteController.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\PortalApiController.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioRestControler.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\PortalApiService.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\msgTelaOK.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\Nova pasta (2)\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\Empresa.java
