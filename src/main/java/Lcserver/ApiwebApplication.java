@@ -38,9 +38,9 @@ public class ApiwebApplication {
             EmpresaController ec = context.getBean(EmpresaController.class);
             tela.atualizaEmpresas((ArrayList<Empresa>) ec.getEmpresas());
             BalcaoMobileControle mc = context.getBean(BalcaoMobileControle.class);
-            tela.atualizaTabela((ArrayList<BalcaoMobile>) mc.getListMobile());
+            tela.atualizaTabela((ArrayList<BalcaoMobile>) mc.getListMobile(), tela.listEmpresa.get(0));
             SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(tela.listEmpresa.get(0).getCnpj(), gfDao.getBalcaoConfigById(1)));
-            SessaoAberta.setCnpj(tela.listEmpresa.get(0).getCnpj());
+            SessaoAberta.setEmpresa(tela.listEmpresa.get(0));
 //            ConfigDao configDao = context.getBean(ConfigDao.class);
 //            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), gfDao.getBalcaoConfigById(Integer.SIZE)));
 //            SessaoAberta.setConfig(configDao.findAll().get(0));

@@ -60,9 +60,11 @@ public class UsuarioRestControler {
             throw new NotFoundException("Usuário não Encontrado na Base de Dados!");
         }
 //        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
+//        System.out.println("BALCAOCONFIG - SERIAL: " + balcaoConfig.getSerial());
+//        System.out.println("CNPJ: " + SessaoAberta.getCnpj());
 //        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
         BalcaoMobile mobile = mobileControle.cadastrarMobile(empresaService.getEmpresaById(idEmpresa), imei, u.getLogin());
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
 
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException();
@@ -80,10 +82,11 @@ public class UsuarioRestControler {
         } else if (!u.getSenha().equals(usuarioDtoInput.getSenha())) {
             throw new PermissaoInsuficienteException("Senha inválida!");
         }
-        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
-        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
+//        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
+//        System.out.println("BALCAOCONFIG: " + balcaoConfig.getId());
+//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
         BalcaoMobile mobile = mobileControle.cadastrarMobile(empresaService.getEmpresaById(idEmpresa), imei, u.getLogin());
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
 
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException();

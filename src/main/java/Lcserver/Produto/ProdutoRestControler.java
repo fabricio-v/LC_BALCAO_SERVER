@@ -51,7 +51,7 @@ public class ProdutoRestControler {
     public List<Produto> getProdutoByDetalhado(@PathVariable Integer idEmpresa, @PathVariable String nome, @PathVariable String descricao, @PathVariable String cod, @PathVariable String fabricante, @PathVariable String referencia, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getProdutoByDetalhado");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário Inativo! Ative-o no Servidor!");
         }
@@ -67,7 +67,7 @@ public class ProdutoRestControler {
     public Produto getProdutoCod(@PathVariable Integer idEmpresa, @PathVariable String cod, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getProdutoCod");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário Inativo! Ative-o no Servidor!");
         }

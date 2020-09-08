@@ -80,10 +80,10 @@ public class BalcaoService {
         if (u == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
-        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
+//        BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(idEmpresa);
+//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfig));
         BalcaoMobile mobile = mobileControle.cadastrarMobile(empresaService.getEmpresaById(idEmpresa), imei, u.getLogin());
-        telaPrincipal.atualizaTabela();
+        telaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
@@ -95,7 +95,7 @@ public class BalcaoService {
     public ResponseEntity<List<Produto>> getProdutoDetalhado(@PathVariable Integer idEmpresa, @PathVariable String nome, @PathVariable String descricao, @PathVariable String cod, @PathVariable String fabricante, @PathVariable String referencia, @PathVariable String imei) {
         telaPrincipal.setLog("getProdutoDetalhado");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        telaPrincipal.atualizaTabela();
+        telaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
@@ -113,7 +113,7 @@ public class BalcaoService {
     public ResponseEntity<Produto> getProdutoCod(@PathVariable Integer idEmpresa, @PathVariable String cod, @PathVariable String imei) {
         telaPrincipal.setLog("getProdutoCod");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        telaPrincipal.atualizaTabela();
+        telaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
@@ -136,7 +136,7 @@ public class BalcaoService {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-            telaPrincipal.atualizaTabela();
+            telaPrincipal.atualizaTabela(mobile.getEmpresa());
             if (mobile.getStatus().equals("INATIVO")) {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             } else {
@@ -149,7 +149,7 @@ public class BalcaoService {
     public ResponseEntity<Cliente> getClienteCartao(@PathVariable Integer idEmpresa, @PathVariable String cartao, @PathVariable String imei) {
         telaPrincipal.setLog("getClienteCartao");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        telaPrincipal.atualizaTabela();
+        telaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (mobile.getStatus().equals("INATIVO")) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
@@ -188,7 +188,7 @@ public class BalcaoService {
     public ResponseEntity<Mensagem> salvar(@PathVariable Integer idEmpresa, @RequestBody Balcao balcao, @PathVariable String imei) {
         telaPrincipal.setLog("/salvar");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        telaPrincipal.atualizaTabela();
+        telaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (mobile.getStatus().equals("INATIVO")) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
