@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-//import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,11 +44,7 @@ public class BalcaoControle {
 
     public List<Balcao> getBalcaoListByIdByClienteNomeByCpfCnpjByRazaoAndPF(Integer idEmpresa, String nome, int id_usuario) {
         List<Balcao> list;
-        //if (id_usuario == 0) {
         list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", (id_usuario == 0 ? "%" : String.valueOf(id_usuario)), idEmpresa, new PageRequest(0, 100));
-        // } else {
-        //      list = balcaoDao.getBalcaoListSemDetByIdByClienteNomeByCpfCnpjByRazaoAndPFByUser(nome + "%", String.valueOf(id_usuario), new PageRequest(0, 100));
-        // }
         if (list == null || list.isEmpty()) {
             throw new NotFoundException("Orçamento não encontrado na base de dados!");
         }
@@ -58,8 +53,6 @@ public class BalcaoControle {
 
     public Balcao getBalcao(Integer idEmpresa, Integer id) {
         Balcao balcao = balcaoDao.getBalcaoByIdByIdEmpresa(id, idEmpresa);
-//        Optional<Balcao> balcao = balcaoDao.getBalcaoByIdByIdEmpresa(id, idEmpresa);
-//        balcao.orElseThrow(() -> new NotFoundException("Orçamento nãoencontrado na base de dados!"));
         if (balcao == null) {
             throw new NotFoundException("Orçamento não encontrado na base de dados!");
         }
@@ -77,7 +70,6 @@ public class BalcaoControle {
         balcao.setDataHoraex(balcaoDao.getDataServer());
         balcao.setStatus("EX");
         balcaoDao.save(balcao);
-        //balcaoDao.deleteById(id);
     }
 
 }
