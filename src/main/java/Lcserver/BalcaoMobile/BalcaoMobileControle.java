@@ -61,11 +61,11 @@ public class BalcaoMobileControle {
         } else if (!mobile.getStatus().equals("INATIVO")) {
             int numAtivo = mobileDao.getTotalMobileAtivo(empresa.getId());
 //            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfigDao.getBalcaoConfigById(empresa.getId())));
-            System.out.println("---------------------------------------");
-            System.out.println("Empresa: " + empresa.getId());
-            System.out.println(numAtivo);
-            System.out.println(SessaoAberta.getQntMobilePermitida());
-            System.out.println("---------------------------------------");
+//            System.out.println("---------------------------------------");
+//            System.out.println("Empresa: " + empresa.getId());
+//            System.out.println(numAtivo);
+//            System.out.println(SessaoAberta.getQntMobilePermitida());
+//            System.out.println("---------------------------------------");
             if (numAtivo > SessaoAberta.getQntMobilePermitida()) {
 //                mobile.setStatus("INATIVO");
             }

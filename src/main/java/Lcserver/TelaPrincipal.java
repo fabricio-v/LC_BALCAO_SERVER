@@ -88,7 +88,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.txt += log + " - " + Funcoes.getDataHoraPC() + "\n";
         jTextArea1.setText(this.txt);
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        atualizaTabela();
+        atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário inativo! Ative-o no servidor!");
         }
@@ -123,8 +123,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jtxtLogErro.setText(this.txtErro);
     }
 
-    public void atualizaTabela() {
-//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfigDao.getBalcaoConfigById(idEmpresa)));
+    public void atualizaTabela(Empresa empresa) {
+        SessaoAberta.setEmpresa(empresa);
+        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getEmpresa().getCnpj(), balcaoConfigDao.getBalcaoConfigById(SessaoAberta.getEmpresa().getId())));
         modeloMobile.setNumRows(0);
         listMobile = (ArrayList<BalcaoMobile>) mobileControle.getListMobileByIdEmpresa(String.valueOf(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId()));
         for (BalcaoMobile m : listMobile) {
@@ -138,9 +139,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }
 
-    public void atualizaTabela(ArrayList<BalcaoMobile> list) {
+    public void atualizaTabela(ArrayList<BalcaoMobile> list, Empresa empresa) {
         this.listMobile = list;
-        atualizaTabela();
+        atualizaTabela(empresa);
     }
 
     public void atualizaEmpresas() {
@@ -624,6 +625,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel6.setText("Empresa");
 
         jcb_empresa1.setToolTipText("");
+        jcb_empresa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_empresa1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -672,9 +678,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jb_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_atualizarActionPerformed
         BalcaoConfig balcaoConfig = balcaoConfigDao.getBalcaoConfigById(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId());
-        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getCnpj(), balcaoConfig));
+//        SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getCnpj(), balcaoConfig));
         jtf_codInstalacao.setText(balcaoConfig == null ? "" : balcaoConfig.getSerial());
-        atualizaTabela();
+        atualizaTabela(listEmpresa.get(jcb_empresa1.getSelectedIndex()));
     }//GEN-LAST:event_jb_atualizarActionPerformed
 
     private void jb_detalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_detalharActionPerformed
@@ -705,8 +711,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_excluirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, SessaoAberta.getQntMobilePermitida() + "\n" + mobileControle.getTotalMobileAtivo(jcb_empresa1.getSelectedIndex() + 1));
+        System.out.println("---------------------------------------");
+//        System.out.println("Empresa: " + empresa.getId());
+        System.out.println("CNPJ: " + SessaoAberta.getEmpresa().getCnpj());
+        System.out.println(SessaoAberta.getQntMobilePermitida());
+//        System.out.println("BALCAOCONFIG - SERIAL: " + balcaoConfig.getSerial());
+        System.out.println("---------------------------------------");
+//        JOptionPane.showMessageDialog(null, SessaoAberta.getQntMobilePermitida() + "\n" + mobileControle.getTotalMobileAtivo(jcb_empresa1.getSelectedIndex() + 1));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jcb_empresa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_empresa1ActionPerformed
+        atualizaTabela(listEmpresa.get(jcb_empresa1.getSelectedIndex()));
+    }//GEN-LAST:event_jcb_empresa1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -783,7 +799,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void salvar() {
         mobileControle.cadastrarMobile(carregaMobile());
         novo();
-        atualizaTabela();
+        atualizaTabela(SessaoAberta.getEmpresa());
         jd_dispositivo.dispose();
     }
 
@@ -804,12 +820,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             if (mobile.getStatus().equals("ATIVO")) {
                 if (new msgTelaPergunta(this, true, "Dispositivo está ativo, deseja excluir mesmo assim?").pergunta()) {
                     mobileControle.removerMobile(listMobile.get(jtb_tabelaMobile.getSelectedRow()));
-                    atualizaTabela();
+                    atualizaTabela(mobile.getEmpresa());
                 }
             } else {
                 if (new msgTelaPergunta(this, true, "Deseja excluir este dispositivo?").pergunta()) {
                     mobileControle.removerMobile(listMobile.get(jtb_tabelaMobile.getSelectedRow()));
-                    atualizaTabela();
+                    atualizaTabela(mobile.getEmpresa());
                 }
             }
         }
@@ -820,8 +836,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             new MsgTelaAtencao(this, true, "Selecione um dispositivo na tabela").setVisible(true);
         } else {
             SessaoAberta.setConfig(configDao.getConfigByIdEmpresa(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId()));
-            SessaoAberta.setCnpj(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getCnpj());
-            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getCnpj(), balcaoConfigDao.getBalcaoConfigById(listMobile.get(jtb_tabelaMobile.getSelectedRow()).getEmpresa().getId())));
+            SessaoAberta.setEmpresa(listEmpresa.get(jcb_empresa1.getSelectedIndex()));
+            SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(SessaoAberta.getEmpresa().getCnpj(), balcaoConfigDao.getBalcaoConfigById(listMobile.get(jtb_tabelaMobile.getSelectedRow()).getEmpresa().getId())));
             novo();
             mobileTemp = listMobile.get(jtb_tabelaMobile.getSelectedRow());
             jtf_id1.setText(mobileTemp.getId() + "");

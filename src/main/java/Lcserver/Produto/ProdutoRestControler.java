@@ -35,27 +35,27 @@ public class ProdutoRestControler {
     @Autowired
     private BalcaoMobileControle mobileControle;
 
-    @GetMapping("/{id}")
+    @GetMapping("/empresas/{idEmpresa}/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Produto getProduto(@PathVariable Integer id) {
+    public Produto getProduto(@PathVariable Integer idEmpresa, @PathVariable Integer id) {
         TelaPrincipal.TelaPrincipal.setLog("getProduto");
-        Produto produto = produtoControle.findById(id);
+        Produto produto = produtoControle.findById(id, idEmpresa);
         if (produto == null) {
             throw new NotFoundException("Nenhum Produto Encontrado!");
         }
         return produto;
     }
 
-    @GetMapping("empresas/{idEmpresa}/{nome}/{descricao}/{cod}/{fabricante}/{referencia}/{imei}")
+    @GetMapping("/empresas/{idEmpresa}/{nome}/{descricao}/{cod}/{fabricante}/{referencia}/{imei}")
     @ResponseStatus(HttpStatus.OK)
     public List<Produto> getProdutoByDetalhado(@PathVariable Integer idEmpresa, @PathVariable String nome, @PathVariable String descricao, @PathVariable String cod, @PathVariable String fabricante, @PathVariable String referencia, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getProdutoByDetalhado");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário Inativo! Ative-o no Servidor!");
         }
-        List<Produto> listProd = produtoControle.getProdutoCodEanNomeDescRefFab(nome.trim(), descricao.trim(), cod.trim(), fabricante.trim(), referencia.trim());
+        List<Produto> listProd = produtoControle.getProdutoCodEanNomeDescRefFab(nome.trim(), descricao.trim(), cod.trim(), fabricante.trim(), referencia.trim(), idEmpresa);
         if (listProd == null || listProd.size() == 0) {
             throw new NotFoundException("Nenhum Produto Encontrado na Base de Dados!");
         }
@@ -67,18 +67,18 @@ public class ProdutoRestControler {
     public Produto getProdutoCod(@PathVariable Integer idEmpresa, @PathVariable String cod, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getProdutoCod");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário Inativo! Ative-o no Servidor!");
         }
-        return produtoControle.getProdutoIdCodEan2(cod).get(0);
+        return produtoControle.getProdutoIdCodEan2(cod, idEmpresa).get(0);
     }
 
     @GetMapping("/isPromocao/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Boolean getProdutoCod(@PathVariable Integer id) {
         TelaPrincipal.TelaPrincipal.setLog("/isPromocao/" + id);
-        return  produtoControle.verificaPromocao(id);
+        return produtoControle.verificaPromocao(id);
     }
 
 }

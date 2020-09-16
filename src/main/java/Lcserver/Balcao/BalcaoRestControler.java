@@ -19,7 +19,6 @@ import Lcserver.TelaPrincipal;
 import Lcserver.Usuario.Usuario;
 import Lcserver.Usuario.UsuarioControle;
 import Util.Funcoes;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -95,7 +94,7 @@ public class BalcaoRestControler {
         TelaPrincipal.TelaPrincipal.setLog("/salvarBalcao");
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0), idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
         mobile.validate();
         if (balcao.getStatus().equals("OC") && !usuario.getPermissoes().contains("BALCAO_SALVAR_ATENDIMENTO")) {
@@ -113,7 +112,7 @@ public class BalcaoRestControler {
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0), idEmpresa);
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (mobile.validate() && balcaoNewDtoInput.validate(usuario)) {
             Balcao balcao = balcaoControle.inserir(balcaoNewDtoInput.build(new Empresa(idEmpresa), usuario, balcaoNewDtoInput, balcaoDao));
             return balcao.getId();
@@ -128,7 +127,7 @@ public class BalcaoRestControler {
         BalcaoMobile mobile = mobileControle.validaAndroid(headers.get("imei").get(0), idEmpresa);
         Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         usuario = usuarioControle.getUsuarioAtivoValida(usuario);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         //Usuario usuario = Funcoes.decode_Base_64_usuario(headers.get("user").get(0));
         if (mobile.getStatus().equals("INATIVO")) {
             throw new PermissaoInsuficienteException();

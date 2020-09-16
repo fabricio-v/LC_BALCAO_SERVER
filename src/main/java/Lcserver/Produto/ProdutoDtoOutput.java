@@ -38,7 +38,7 @@ public class ProdutoDtoOutput {
     private Double descontoMax4;
     private Double precoPromocao;
     private Date dataPromocao;
-    private Double estoque;
+    private double estoque;
 
     public ProdutoDtoOutput(Produto produto) {
         this.id = produto.getId();
@@ -47,7 +47,7 @@ public class ProdutoDtoOutput {
         this.codigoBarras = produto.getCodigoBarras();
         this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
-        this.fabricante = new Fabricante(produto.getFabricante().getId(), produto.getNome());
+        this.fabricante = new Fabricante(produto.getFabricante().getId(), produto.getFabricante().getNome());
         this.unidade = new Unidade(produto.getUnidade().getId(), produto.getUnidade().getNome());
         this.podeDesconto = produto.getPodeDesconto();
         this.podeFracionado = produto.getPodeFracionado();
@@ -65,7 +65,7 @@ public class ProdutoDtoOutput {
         this.precoPromocao = produto.getPrecoPromocao();
         this.dataPromocao = produto.getDataPromocaoInicial();
         this.dataPromocao = produto.getDataPromocaoFinal();
-//        this.estoque = produto.getEstoque();
+        this.estoque = produto.getEstoque();
 
     }
 
@@ -253,14 +253,12 @@ public class ProdutoDtoOutput {
         this.dataPromocao = dataPromocao;
     }
 
-    public Double getEstoque() {
+    public double getEstoque() {
         return estoque;
     }
 
-    public void setEstoque(Double estoque) {
+    public void setEstoque(double estoque) {
         this.estoque = estoque;
     }
 
-    
-    
 }

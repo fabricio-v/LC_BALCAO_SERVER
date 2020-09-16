@@ -7,10 +7,12 @@ package Lcserver.Produto;
 
 import Lcserver.Categoria.Categoria;
 import Lcserver.Categoria.CategoriaSub;
+import Lcserver.EstoqueSaldo.EstoqueSaldo;
 import Lcserver.Fabricante.Fabricante;
 import Lcserver.Unidade.Unidade;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +25,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -135,15 +138,15 @@ public class Produto implements Serializable {
     //    private Double ipi;
     @Column(name = "preco_promocao")
     private Double precoPromocao;
-    
+
     @Column(name = "data_promocaoinicial")
-    @Temporal(TemporalType.DATE)    
+    @Temporal(TemporalType.DATE)
     private Date dataPromocaoInicial;
-    
+
     @Column(name = "data_promocaofinal")
-    @Temporal(TemporalType.DATE)    
+    @Temporal(TemporalType.DATE)
     private Date dataPromocaoFinal;
-    
+
     @Column(name = "comissao")
     private Double comissao;
 //    @Column(name = "estoque")
@@ -183,8 +186,13 @@ public class Produto implements Serializable {
     @Size(max = 80)
     @Column(name = "local")
     private String local;
+//    @ManyToOne
+//    @JoinColumn(name = "id", referencedColumnName = "id_produto")
+    @Transient
+    private double estoque;
 
     public Produto() {
+        this.estoque = 0;
     }
 
     public Produto(Integer id) {
@@ -494,14 +502,6 @@ public class Produto implements Serializable {
     public void setComissao(Double comissao) {
         this.comissao = comissao;
     }
-//
-//    public Double getEstoque() {
-//        return estoque;
-//    }
-//
-//    public void setEstoque(Double estoque) {
-//        this.estoque = estoque;
-//    }
 
     public Double getEstoqueMinimo() {
         return estoqueMinimo;
@@ -605,6 +605,14 @@ public class Produto implements Serializable {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public double getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(double estoque) {
+        this.estoque = estoque;
     }
 
     @Override

@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Jordan LC Sistemas
  */
 @RestController
-@RequestMapping("/LcBalcaoApi")
 public class PortalApiController {
 
     @Autowired
@@ -44,7 +43,7 @@ public class PortalApiController {
     private EstadosRepository estadosRepository;
 
     @ResponseBody
-    @GetMapping(value = "/empresas/{idEmpresa}/consutaCnpjReceitaWs/{cpfCnpjConsulta}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/empresas/{idEmpresa}/LcBalcaoApi/consutaCnpjReceitaWs/{cpfCnpjConsulta}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> consultaEmpresaReceitaWs(@PathVariable Integer idEmpresa, @PathVariable(required = true) String cpfCnpjConsulta, @RequestHeader(required = true) String imei) {
         TelaPrincipal.TelaPrincipal.setLogAndValidaImei("/consutaCnpjReceita", imei, idEmpresa);
         Optional<Cliente> clienteByCpfCnpj = clienteRepository.getClienteByCpfCnpj(cpfCnpjConsulta);

@@ -67,16 +67,21 @@ public class BalcaoDet implements Serializable {
     @Size(max = 1)
     @Column(name = "tipo_preco")
     private String tipoPreco;
+    @Size(max = 1)
+    @Column(name = "acre_forma")
+    private String acreForma;
+    @Column(name = "acrescimo")
+    private Double acrescimo;
+    @Column(name = "valor_acrescimo")
+    private Double valorAcrescimo;
 
     public BalcaoDet() {
         this.idLote = 0;
-//        this.descTipo = "Desconto";
     }
 
     public BalcaoDet(Integer id) {
         this.id = id;
         this.idLote = 0;
-//        this.descTipo = "Desconto";
     }
 
     public Integer getId() {
@@ -134,7 +139,6 @@ public class BalcaoDet implements Serializable {
 //    public void setDescTipo(String descTipo) {
 //        this.descTipo = descTipo;
 //    }
-
     public String getDescForma() {
         return descForma;
     }
@@ -173,6 +177,30 @@ public class BalcaoDet implements Serializable {
 
     public void setDesconto(Double desconto) {
         this.desconto = desconto;
+    }
+
+    public String getAcreForma() {
+        return acreForma;
+    }
+
+    public void setAcreForma(String acreForma) {
+        this.acreForma = acreForma;
+    }
+
+    public Double getAcrescimo() {
+        return acrescimo;
+    }
+
+    public void setAcrescimo(Double acrescimo) {
+        this.acrescimo = acrescimo;
+    }
+
+    public Double getValorAcrescimo() {
+        return valorAcrescimo;
+    }
+
+    public void setValorAcrescimo(Double valorAcrescimo) {
+        this.valorAcrescimo = valorAcrescimo;
     }
 
     public Double getQuantidade() {
