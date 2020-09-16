@@ -8,6 +8,7 @@ Lcserver\Mensagens\msgTelaPergunta$1.class
 Lcserver\Mensagens\msgTelaPergunta$4.class
 Lcserver\Mensagens\msgTelaPergunta.class
 Lcserver\Pagamento\PagamentoRestController.class
+Lcserver\LocalEstoque\LocalEstoqueRepository.class
 Lcserver\Mensagens\MsgTelaErro.class
 Lcserver\Produto\ProdutoDao.class
 Lcserver\Empresa\EmpresaController.class
@@ -46,6 +47,7 @@ Lcserver\Unidade\Unidade.class
 Lcserver\Usuario\Funcao.class
 Lcserver\ApiwebApplication.class
 Lcserver\Auditoria\Auditoria.class
+Lcserver\LocalEstoque\LocalEstoque.class
 Lcserver\Mensagens\MsgTelaErro$1.class
 Lcserver\TelaPrincipal$6.class
 Lcserver\Mensagens\msgTelaPergunta$5.class
@@ -62,11 +64,14 @@ Lcserver\Impressora\ImpressoraLC.class
 Lcserver\Balcao\BalcaoDet.class
 Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.class
 Lcserver\Cliente\Cliente.class
+Lcserver\EstoqueSaldo\EstoqueSaldo.class
 Lcserver\TelaPrincipal$11.class
 Lcserver\Conexao\Database.class
 Lcserver\Configuracao\ConfigDao.class
+Lcserver\EstoqueSaldo\EstoqueSaldoController.class
 Lcserver\Produto\ProdutoControle.class
 Lcserver\Mensagens\MsgTelaErro$2.class
+Lcserver\EstoqueSaldo\EstoqueSaldoService.class
 Lcserver\Impressora\Impressora.class
 Lcserver\BalcaoSysTray.class
 Lcserver\PortalApi\PortalApiService$1.class
@@ -90,6 +95,7 @@ Lcserver\Balcao\dto\output\BalcaoDtoOutput.class
 Lcserver\Balcao\BalcaoRec.class
 Lcserver\Balcao\BalcaoDetDao.class
 Lcserver\Balcao\dto\Input\BalcaoNewDtoInput.class
+Lcserver\LocalEstoque\LocalEstoqueService.class
 Lcserver\Exception\OperacaoInvalidaException.class
 Lcserver\Rest\BalcaoService.class
 Lcserver\Mensagens\msgTelaPergunta$3.class
@@ -123,10 +129,12 @@ Lcserver\Pagamento\dto\output\PagamentoDtoOutput.class
 Lcserver\TelaPrincipal$10.class
 Lcserver\Mensagens\msgTelaOK$1.class
 Lcserver\Pagamento\PagamentoRepository.class
+Lcserver\LocalEstoque\LocalEstoqueController.class
 Lcserver\Cliente\ClienteService.class
 Lcserver\Mensagens\msgTelaOK.class
 Lcserver\Cliente\dto\output\ClienteDtoOutput.class
 Lcserver\Unidade\UnidadeDao.class
 Lcserver\Balcao\dto\output\BalcaoListDtoOutput.class
 Lcserver\Categoria\CategoriaDao.class
+Lcserver\EstoqueSaldo\EstoqueSaldoRepository.class
 Lcserver\BalcaoSysTray$2.class

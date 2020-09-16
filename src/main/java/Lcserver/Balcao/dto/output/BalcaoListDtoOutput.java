@@ -15,7 +15,7 @@ import java.util.Date;
  *
  * @author Jordan LC Sistemas
  */
-public class BalcaoListDtoOutput implements Serializable{
+public class BalcaoListDtoOutput implements Serializable {
 
     private Integer id;
     private String usuario;

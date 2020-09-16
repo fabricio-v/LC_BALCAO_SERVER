@@ -16,6 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
  * @author JORDAN QUEIROGA
  */
 @Repository
-public interface  BalcaoRecDao extends JpaRepository<BalcaoRec, Integer>{
-    
+public interface BalcaoRecDao extends JpaRepository<BalcaoRec, Integer> {
+
+    @Transactional
+    @Modifying
+    @Query(value = "delete from BalcaoRec where id_balcao = ?1", nativeQuery = true)
+    public void deleteIdBalcao(Integer idBalcao);
+
 }

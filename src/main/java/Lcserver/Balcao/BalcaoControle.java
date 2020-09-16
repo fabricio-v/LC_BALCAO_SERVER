@@ -33,6 +33,7 @@ public class BalcaoControle {
     public Balcao inserir(Balcao balcao) {
         balcao.setIdUsuarioex(0);
         balcaoDetDao.deleteIdBalcao(balcao.getId());
+        balcaoRecDao.deleteIdBalcao(balcao.getId());
         return balcaoDao.save(balcao);
     }
 

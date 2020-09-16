@@ -20,10 +20,13 @@ public class BalcaoDetDtoOutput {
     private Integer idLote;
     private Double preco;
     private String descForma;
+    private String acreForma;
     private Double total;
     private Double valorDesconto;
+    private Double valorAcrescimo;
     private Double subTotal;
     private Double desconto;
+    private Double acrescimo;
     private Double quantidade;
     private String tipoPreco;
 
@@ -34,10 +37,13 @@ public class BalcaoDetDtoOutput {
         this.idLote = balcaoDet.getIdLote();
         this.preco = balcaoDet.getPreco();
         this.descForma = balcaoDet.getDescForma();
+        this.acreForma = balcaoDet.getAcreForma();
         this.total = balcaoDet.getTotal();
         this.valorDesconto = balcaoDet.getValorDesconto();
+        this.valorAcrescimo = balcaoDet.getValorAcrescimo();
         this.subTotal = balcaoDet.getSubTotal();
         this.desconto = balcaoDet.getDesconto();
+        this.acrescimo = balcaoDet.getAcrescimo();
         this.quantidade = balcaoDet.getQuantidade();
         this.tipoPreco = balcaoDet.getTipoPreco();
     }
@@ -137,9 +143,29 @@ public class BalcaoDetDtoOutput {
     public void setTipoPreco(String tipoPreco) {
         this.tipoPreco = tipoPreco;
     }
-    
-    
-    
-    
+
+    public String getAcreForma() {
+        return acreForma;
+    }
+
+    public void setAcreForma(String acreForma) {
+        this.acreForma = acreForma;
+    }
+
+    public Double getValorAcrescimo() {
+        return valorAcrescimo;
+    }
+
+    public void setValorAcrescimo(Double valorAcrescimo) {
+        this.valorAcrescimo = valorAcrescimo;
+    }
+
+    public Double getAcrescimo() {
+        return acrescimo;
+    }
+
+    public void setAcrescimo(Double acrescimo) {
+        this.acrescimo = acrescimo;
+    }
 
 }

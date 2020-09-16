@@ -1,3 +1,5 @@
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstoqueSaldo\EstoqueSaldo.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\LocalEstoque\LocalEstoqueRepository.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobileControle.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Empresa\dto\output\EmpresaDtoOutput.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Util\FuncoesFormataTexto.java
@@ -6,17 +8,21 @@ D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Ba
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\TelaPrincipal.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\UsuarioRestControler.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\Auditoria.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\LocalEstoque\LocalEstoqueService.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Produto\ProdutoDao.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstoqueSaldo\EstoqueSaldoRepository.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagens\msgTelaOK.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\NotFoundException.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\BalcaoConfigDao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Exception\RestExceptionHandler.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\form\ClienteDebitoForm.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Unidade\Unidade.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstoqueSaldo\EstoqueSaldoController.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Cliente\dto\input\ClienteNovoDtoInput.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\Funcao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobile.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaControle.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\LocalEstoque\LocalEstoqueController.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaDao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Conexao\DatabaseConfig.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigDao.java
@@ -30,6 +36,7 @@ D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Co
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Pagamento\Pagamento.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\dto\input\UsuarioDtoInput.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoDet.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\LocalEstoque\LocalEstoque.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Balcao\BalcaoRec.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Auditoria\AuditoriaRestControle.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Usuario\dto\output\UsuarioDtoOutput.java
@@ -86,6 +93,7 @@ D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Ca
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstadoCidade\Cidades.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Configuracao\ConfigControle.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Mensagem\Mensagem.java
+D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\EstoqueSaldo\EstoqueSaldoService.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\PortalApi\dto\input\EmpresaBalcaoApiDtoInput.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\BalcaoMobile\BalcaoMobileDao.java
 D:\Projetos\PROJETOS_ANDROID\BACK-END\LC_BALCAO_SERVER\src\main\java\Lcserver\Categoria\CategoriaSub.java

@@ -100,7 +100,7 @@ public class BalcaoService {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
             List<Produto> listProd = new ArrayList<>();
-            listProd = produtoControle.getProdutoCodEanNomeDescRefFab(nome.trim(), descricao.trim(), cod.trim(), fabricante.trim(), referencia.trim());
+            listProd = produtoControle.getProdutoCodEanNomeDescRefFab(nome.trim(), descricao.trim(), cod.trim(), fabricante.trim(), referencia.trim(), idEmpresa);
             if (listProd.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {
@@ -118,7 +118,7 @@ public class BalcaoService {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
             List<Produto> listProd = new ArrayList<>();
-            listProd = produtoControle.getProdutoIdCodEan(cod);
+            listProd = produtoControle.getProdutoIdCodEan(cod, idEmpresa);
             if (listProd.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {
