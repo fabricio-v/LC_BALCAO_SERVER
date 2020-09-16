@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,6 +23,9 @@ public class BalcaoDetNewDtoInput {
     private double desconto;
     private String descForma;
     private double valorDesconto;
+    private double acrescimo;
+    private String acreForma;
+    private double valorAcrescimo;
     private double subTotal;
     private String tipoPreco;
 
@@ -33,14 +36,17 @@ public class BalcaoDetNewDtoInput {
         det.setPreco(balcaoDetDtoInput.getPreco());
         det.setQuantidade(balcaoDetDtoInput.getQuantidade());
         det.setTotal(balcaoDetDtoInput.getTotal());
-//        det.setDescTipo("Desconto");
         det.setDesconto(balcaoDetDtoInput.getDesconto());
         det.setDescForma(balcaoDetDtoInput.getDescForma());
         det.setValorDesconto(balcaoDetDtoInput.getValorDesconto());
+        det.setAcrescimo(balcaoDetDtoInput.getAcrescimo());
+        det.setAcreForma(balcaoDetDtoInput.getAcreForma());
+        det.setValorAcrescimo(balcaoDetDtoInput.getValorAcrescimo());
         det.setSubTotal(balcaoDetDtoInput.getSubTotal());
         det.setTipoPreco(balcaoDetDtoInput.getTipoPreco());
         det.setBalcao(balcao);
         det.setItem(Funcoes.formatoCodigo3(index));
+        System.out.println("valor acrescimo: " + det.getValorAcrescimo());
         return det;
     }
 
@@ -98,6 +104,30 @@ public class BalcaoDetNewDtoInput {
 
     public void setValorDesconto(double valorDesconto) {
         this.valorDesconto = valorDesconto;
+    }
+
+    public double getAcrescimo() {
+        return acrescimo;
+    }
+
+    public void setAcrescimo(double acrescimo) {
+        this.acrescimo = acrescimo;
+    }
+
+    public String getAcreForma() {
+        return acreForma;
+    }
+
+    public void setAcreForma(String acreForma) {
+        this.acreForma = acreForma;
+    }
+
+    public double getValorAcrescimo() {
+        return valorAcrescimo;
+    }
+
+    public void setValorAcrescimo(double valorAcrescimo) {
+        this.valorAcrescimo = valorAcrescimo;
     }
 
     public double getSubTotal() {

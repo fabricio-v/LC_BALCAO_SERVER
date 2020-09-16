@@ -10,7 +10,6 @@ import Lcserver.Exception.OperacaoInvalidaException;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import Lcserver.Usuario.Usuario;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -34,6 +33,7 @@ public class BalcaoControle {
     public Balcao inserir(Balcao balcao) {
         balcao.setIdUsuarioex(0);
         balcaoDetDao.deleteIdBalcao(balcao.getId());
+        balcaoRecDao.deleteIdBalcao(balcao.getId());
         return balcaoDao.save(balcao);
     }
 

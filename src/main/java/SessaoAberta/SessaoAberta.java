@@ -7,6 +7,7 @@ package SessaoAberta;
 
 import Lcserver.Conexao.Database;
 import Lcserver.Configuracao.Config;
+import Lcserver.Empresa.Empresa;
 
 /**
  *
@@ -19,6 +20,7 @@ public class SessaoAberta {
     private static String cnpj = "";
     private static Config config;
     private static Database database;
+    private static Empresa empresa;
 
     public static String getVersao() {
         return versao;
@@ -32,13 +34,13 @@ public class SessaoAberta {
         SessaoAberta.qntMobilePermitida = qntMobilePermitida;
     }
 
-    public static String getCnpj() {
-        return cnpj;
-    }
-
-    public static void setCnpj(String cnpj) {
-        SessaoAberta.cnpj = cnpj;
-    }
+//    public static String getCnpj() {
+//        return cnpj;
+//    }
+//
+//    public static void setCnpj(String cnpj) {
+//        SessaoAberta.cnpj = cnpj;
+//    }
 
     public static Config getConfig() {
         return config;
@@ -54,6 +56,14 @@ public class SessaoAberta {
 
     public static void setDatabase(Database database) {
         SessaoAberta.database = database;
+    }
+
+    public static Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public static void setEmpresa(Empresa empresa) {
+        SessaoAberta.empresa = empresa;
     }
 
 }

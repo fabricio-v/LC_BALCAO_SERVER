@@ -34,8 +34,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PortalApiService {
 
-    private final String URL_BASE = "http://200.98.200.127:4803/LcBalcaoApi";
-    //private final String URL_BASE = "http://localhost:4803/LcBalcaoApi";
+    private final String URL_BASE = "http://portal-api.lcsistemas.com.br:4803/LcBalcaoApi";
     private final String PATH_CONSULTA_RECEITAWS = "/consutaCnpjReceitaWs";
 
     @Autowired

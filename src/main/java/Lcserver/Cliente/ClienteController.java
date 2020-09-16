@@ -64,7 +64,7 @@ public class ClienteController {
     public List<ClienteDtoOutput> getClienteByNome(@PathVariable Integer idEmpresa, @PathVariable String nome, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getClienteByNome");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário inativo! Ative-o no servidor!");
         }
@@ -84,7 +84,7 @@ public class ClienteController {
     public Cliente getClienteCartao(@PathVariable Integer idEmpresa, @PathVariable String cartao, @PathVariable String imei) {
         TelaPrincipal.TelaPrincipal.setLog("getClienteCartao");
         BalcaoMobile mobile = mobileControle.validaAndroid(imei, idEmpresa);
-        TelaPrincipal.TelaPrincipal.atualizaTabela();
+        TelaPrincipal.TelaPrincipal.atualizaTabela(mobile.getEmpresa());
         if (!mobile.getStatus().equals("ATIVO")) {
             throw new PermissaoInsuficienteException("Usuário inativo! Ative-o no servidor!");
         }
