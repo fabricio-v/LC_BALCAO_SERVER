@@ -336,10 +336,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" pref="921" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="6" pref="583" max="32767" attributes="0"/>
                               <Component id="jb_atualizar" linkSize="1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jb_excluir" linkSize="1" min="-2" max="-2" attributes="0"/>
@@ -357,14 +355,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="395" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="396" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jb_detalhar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jb_atualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jb_sair" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jb_excluir" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -491,14 +488,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_excluirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel6">
@@ -556,7 +545,7 @@
                   <Font name="Arial" size="12" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="text" type="java.lang.String" value="C&#xf3;digo de Instala&#xe7;&#xe3;o"/>
+                <Property name="text" type="java.lang.String" value="C&#xf3;digo de Ativa&#xe7;&#xe3;o"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jbtn_registrar">

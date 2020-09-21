@@ -8,6 +8,7 @@ package Lcserver.Empresa;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,15 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Fabricio
  */
 @RestController
-@RequestMapping("/empresas")
 public class EmpresaController {
 
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    @GetMapping
+    @Autowired
+    private EmpresaService empresaService;
+
+    @GetMapping("/empresas")
     public List<Empresa> getEmpresas() {
         return empresaRepository.findAll();
+    }
+
+    @GetMapping("/empresas/{idEmpresa}/logo")
+    public byte[] exibirLogo(@PathVariable Integer idEmpresa) {
+        return empresaService.getEmpresaById(idEmpresa).getLogo();
     }
 
 }

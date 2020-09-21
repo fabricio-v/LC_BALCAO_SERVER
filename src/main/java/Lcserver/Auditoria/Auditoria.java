@@ -5,19 +5,24 @@
  */
 package Lcserver.Auditoria;
 
+import Lcserver.Empresa.Empresa;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -36,8 +41,12 @@ public class Auditoria implements Serializable {
     private Integer id;
     @Column(name = "id_usuario")
     private Integer idUsuario;
-    @Column(name = "id_empresa")
-    private Integer idEmpresa;
+
+    @NotNull
+    @ManyToOne(optional = false, cascade = CascadeType.DETACH)
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id")
+    private Empresa empresa;
+
     @Column(name = "data_hora")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
@@ -57,12 +66,11 @@ public class Auditoria implements Serializable {
     private String descricao;
 
     public Auditoria() {
-        idUsuario = 1;
-        idEmpresa = 1;
-        dataHora = null;
-        operacao = "";
-        local = "";
-        descricao = "";
+        this.idUsuario = 1;
+        this.dataHora = null;
+        this.operacao = "";
+        this.local = "";
+        this.descricao = "";
     }
 
     public Integer getId() {
@@ -81,12 +89,12 @@ public class Auditoria implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Integer getIdEmpresa() {
-        return idEmpresa;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setIdEmpresa(Integer idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public Date getDataHora() {
@@ -128,7 +136,7 @@ public class Auditoria implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-   
+
     @Override
     public int hashCode() {
         int hash = 0;

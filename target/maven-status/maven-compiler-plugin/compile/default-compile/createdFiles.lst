@@ -65,7 +65,6 @@ Lcserver\Balcao\BalcaoDet.class
 Lcserver\Balcao\dto\Input\BalcaoRecNewDtoInput.class
 Lcserver\Cliente\Cliente.class
 Lcserver\EstoqueSaldo\EstoqueSaldo.class
-Lcserver\TelaPrincipal$11.class
 Lcserver\Conexao\Database.class
 Lcserver\Configuracao\ConfigDao.class
 Lcserver\EstoqueSaldo\EstoqueSaldoController.class

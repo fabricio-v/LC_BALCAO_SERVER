@@ -2,11 +2,8 @@ package Lcserver;
 
 import Lcserver.Auditoria.AuditoriaControle;
 import Lcserver.Configuracao.BalcaoConfigDao;
-import Lcserver.Empresa.EmpresaRepository;
 import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
-import Lcserver.Configuracao.BalcaoConfig;
-import Lcserver.Configuracao.ConfigDao;
 import Lcserver.Empresa.Empresa;
 import Lcserver.Empresa.EmpresaController;
 import Lcserver.Mensagens.MsgTelaErro;
@@ -47,7 +44,7 @@ public class ApiwebApplication {
         } catch (Exception ex) {
             ex.printStackTrace();
             tela.setErro("main", ex);
-            new MsgTelaErro(null, true, "Erro Inicializar", ex, ApiwebApplication.class, "main").setVisible(true);
+            new MsgTelaErro(null, true, "Erro Inicializar", ex, ApiwebApplication.class, "main", SessaoAberta.getEmpresa()).setVisible(true);
         }
     }
 }

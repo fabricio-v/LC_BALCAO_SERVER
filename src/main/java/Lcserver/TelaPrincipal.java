@@ -101,14 +101,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextArea1.setText(this.txt);
     }
 
-    public void setLogAuditoria(BalcaoMobile mobile, ArrayList<Auditoria> listAuditoria) {
+    public void setLogAuditoria(BalcaoMobile mobile, ArrayList<Auditoria> listAuditoria, Empresa empresa) {
         txt += "-----------------------------------------------------------\n";
         txt += "DISPOSITIVO: " + mobile.getId() + " | " + mobile.getNome() + " | " + mobile.getUsuario() + " | " + mobile.getImei() + " | " + mobile.getStatus() + "\n";
         txt += "-----------------------------------------------------------\n";
         for (Auditoria auditoria : listAuditoria) {
             txt += auditoria.getId() + " - Auditoria: " + Funcoes.formataDataHoraBr(auditoria.getDataHora()) + "\r\n";
             txt += "USUARIO: " + auditoria.getIdUsuario() + "\r\n";
-            txt += "EMPRESA: " + auditoria.getIdEmpresa() + "\r\n";
+            txt += "EMPRESA: " + empresa.getId() + "\r\n";
             txt += "LOCAL: " + auditoria.getLocal() + "\r\n";
             txt += "METODO: " + auditoria.getMetodo() + "\r\n";
             txt += "DESCRICAO:\n" + auditoria.getDescricao().replace("\n", "\n");
@@ -209,7 +209,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jb_detalhar = new javax.swing.JButton();
         jb_sair = new javax.swing.JButton();
         jb_excluir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jtf_codInstalacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -457,13 +456,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -473,9 +465,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 583, Short.MAX_VALUE)
                         .addComponent(jb_atualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_excluir)
@@ -492,14 +482,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_detalhar)
                     .addComponent(jb_atualizar)
                     .addComponent(jb_sair)
-                    .addComponent(jb_excluir)
-                    .addComponent(jButton1))
+                    .addComponent(jb_excluir))
                 .addContainerGap())
         );
 
@@ -510,7 +499,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Código de Instalação");
+        jLabel4.setText("Código de Ativação");
 
         jbtn_registrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jbtn_registrar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/disk.png"));
@@ -710,22 +699,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         excluir();
     }//GEN-LAST:event_jb_excluirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("---------------------------------------");
-//        System.out.println("Empresa: " + empresa.getId());
-        System.out.println("CNPJ: " + SessaoAberta.getEmpresa().getCnpj());
-        System.out.println(SessaoAberta.getQntMobilePermitida());
-//        System.out.println("BALCAOCONFIG - SERIAL: " + balcaoConfig.getSerial());
-        System.out.println("---------------------------------------");
-//        JOptionPane.showMessageDialog(null, SessaoAberta.getQntMobilePermitida() + "\n" + mobileControle.getTotalMobileAtivo(jcb_empresa1.getSelectedIndex() + 1));
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jcb_empresa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_empresa1ActionPerformed
         atualizaTabela(listEmpresa.get(jcb_empresa1.getSelectedIndex()));
     }//GEN-LAST:event_jcb_empresa1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -791,7 +769,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             } catch (Exception e) {
                 setErro("jbtn_registrarActionPerformed", e);
-                new MsgTelaErro(this, true, "Erro ao Registrar", e, getClass(), "jbtn_registrarActionPerformed").setVisible(true);
+                new MsgTelaErro(this, true, "Erro ao Registrar", e, getClass(), "jbtn_registrarActionPerformed", listEmpresa.get(jcb_empresa1.getSelectedIndex())).setVisible(true);
             }
         }
     }

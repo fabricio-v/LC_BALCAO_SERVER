@@ -12,6 +12,7 @@ package Lcserver.Mensagens;
 
 ////import Auditoria.AuditoriaDao;
 import Lcserver.ApiwebApplication;
+import Lcserver.Empresa.Empresa;
 import java.awt.event.KeyEvent;
 
 /**
@@ -23,13 +24,13 @@ public class MsgTelaErro extends javax.swing.JDialog {
     /**
      * Creates new form msgTela
      */
-    public MsgTelaErro(java.awt.Frame parent, boolean modal, String titulo, Exception ex, Class classe, String metodo) {
+    public MsgTelaErro(java.awt.Frame parent, boolean modal, String titulo, Exception ex, Class classe, String metodo, Empresa empresa) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle(SessaoAberta.SessaoAberta.getVersao());
         jTextArea1.setText("(1) " + ex.getMessage() + "\n(2) " + ex.getCause() + "\n" + ex);
-        auditoria(classe, metodo, ex);
+        auditoria(classe, metodo, ex, empresa);
     }
 
     /**
@@ -158,7 +159,7 @@ public class MsgTelaErro extends javax.swing.JDialog {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
-    private void auditoria(Class classe, String qualMetodo, Exception ex) {
-        ApiwebApplication.auditoriaControle.erro(classe, qualMetodo, ex);
+    private void auditoria(Class classe, String qualMetodo, Exception ex, Empresa empresa) {
+        ApiwebApplication.auditoriaControle.erro(classe, qualMetodo, ex, empresa);
     }
 }

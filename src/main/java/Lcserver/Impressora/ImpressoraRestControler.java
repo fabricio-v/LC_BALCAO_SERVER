@@ -6,6 +6,7 @@
 package Lcserver.Impressora;
 
 import Lcserver.Auditoria.AuditoriaControle;
+import Lcserver.Empresa.EmpresaService;
 import Lcserver.Exception.ImpressaoErro;
 import Lcserver.Rest.BalcaoService;
 import Lcserver.TelaPrincipal;
@@ -33,6 +34,8 @@ public class ImpressoraRestControler {
     private BalcaoImpressao balcaoImpressao;
     @Autowired
     private AuditoriaControle auditoriaControle;
+    @Autowired
+    private EmpresaService empresaService;
 
     @PostMapping
     @RequestMapping(value = "/empresas/{idEmpresa}/imprimir/balcoes/{id}")
@@ -42,7 +45,7 @@ public class ImpressoraRestControler {
             balcaoImpressao.imprimir(idEmpresa, id, i);
         } catch (Exception ex) {
             Logger.getLogger(BalcaoService.class.getName()).log(Level.SEVERE, null, ex);
-            auditoriaControle.erro(ImpressoraRestControler.class, "imprimir", ex);
+            auditoriaControle.erro(ImpressoraRestControler.class, "imprimir", ex, empresaService.getEmpresaById(idEmpresa));
             TelaPrincipal.TelaPrincipal.setErro("Não foi Possível Imprimir no(a) " + i.getDescricao() + ", Porta: " + i.getPorta(), ex);
             throw new ImpressaoErro("Não foi Possível Imprimir no(a) " + i.getDescricao() + ", Porta: " + i.getPorta());
         }
@@ -52,12 +55,12 @@ public class ImpressoraRestControler {
 
     @PostMapping
     @RequestMapping(value = "/empresas/{idEmpresa}/imprimir/paginaTeste")
-    public Void imprimirPaginaTeste(@RequestBody Impressora i) {
+    public Void imprimirPaginaTeste(@RequestBody Impressora i, @PathVariable Integer idEmpresa) {
         TelaPrincipal.TelaPrincipal.setLog("/imprimirPaginaTeste");
         try {
             balcaoImpressao.imprimirPaginaTeste(i);
         } catch (Exception ex) {
-            auditoriaControle.erro(ImpressoraRestControler.class, "imprimirPaginaTeste", ex);
+            auditoriaControle.erro(ImpressoraRestControler.class, "imprimirPaginaTeste", ex, empresaService.getEmpresaById(idEmpresa));
             Logger.getLogger(BalcaoService.class.getName()).log(Level.SEVERE, null, ex);
             throw new ImpressaoErro("Não foi Possível Imprimir no(a) " + i.getDescricao() + ", Porta: " + i.getPorta());
         }

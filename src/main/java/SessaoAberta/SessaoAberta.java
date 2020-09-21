@@ -15,7 +15,7 @@ import Lcserver.Empresa.Empresa;
  */
 public class SessaoAberta {
 
-    public static final String versao = "v1.0.4 MOBILE";
+    public static final String versao = "v1.0.5 MOBILE";
     private static int qntMobilePermitida = 0;
     private static String cnpj = "";
     private static Config config;

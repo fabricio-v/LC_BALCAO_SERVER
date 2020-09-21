@@ -5,6 +5,7 @@
  */
 package Lcserver.Auditoria;
 
+import Lcserver.Empresa.Empresa;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,13 @@ public class AuditoriaControle {
     @Autowired
     private AuditoriaDao auditoriaDao;
 
-    public void erro(Class qualClasse, String qualMetodo, Exception ex) {
+    public void erro(Class qualClasse, String qualMetodo, Exception ex, Empresa empresa) {
         String descricao = ex.getMessage();
         for (StackTraceElement teste : ex.getStackTrace()) {
             descricao += teste.toString() + "\n";
         }
         Auditoria auditoria = new Auditoria();
+        auditoria.setEmpresa(empresa);
         auditoria.setDataHora(auditoriaDao.getDataServer());
         auditoria.setOperacao("ERRO");
         auditoria.setLocal(qualClasse.getName());

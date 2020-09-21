@@ -7,6 +7,7 @@ package Lcserver.Auditoria;
 
 import Lcserver.BalcaoMobile.BalcaoMobile;
 import Lcserver.BalcaoMobile.BalcaoMobileControle;
+import Lcserver.Empresa.EmpresaService;
 import Lcserver.Exception.NotFoundException;
 import Lcserver.TelaPrincipal;
 import java.util.ArrayList;
@@ -26,8 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author JORDAN QUEIROGA
  */
 @RestController
-@RequestMapping(value = "/auditorias",
-        produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
         consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class AuditoriaRestControle {
 
@@ -35,8 +35,10 @@ public class AuditoriaRestControle {
     private AuditoriaControle auditoriaControle;
     @Autowired
     private BalcaoMobileControle mobileControle;
+    @Autowired
+    private EmpresaService empresaService;
 
-    @PostMapping
+    @PostMapping("/auditorias")
     @ResponseStatus(HttpStatus.OK)
     public Void exportarAlditoria(@RequestBody ArrayList<Auditoria> list) {
         for (Auditoria a : list) {
@@ -47,11 +49,11 @@ public class AuditoriaRestControle {
         return null;
     }
 
-    @PostMapping(value = "/log/{imei}")
+    @PostMapping(value = "/empresas/{idEmpresa}/auditorias/log/{imei}")
     @ResponseStatus(HttpStatus.OK)
-    public Void setAuditoriaLog(@RequestBody ArrayList<Auditoria> list, @PathVariable String imei) {
-        BalcaoMobile mobile = mobileControle.getMobile(imei);
-        TelaPrincipal.TelaPrincipal.setLogAuditoria(mobile, list);
+    public Void setAuditoriaLog(@RequestBody ArrayList<Auditoria> list, @PathVariable String imei, @PathVariable Integer idEmpresa) {
+        BalcaoMobile mobile = mobileControle.getMobile(imei, idEmpresa);
+        TelaPrincipal.TelaPrincipal.setLogAuditoria(mobile, list, empresaService.getEmpresaById(idEmpresa));
         return null;
 
     }

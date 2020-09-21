@@ -91,8 +91,8 @@ public class BalcaoMobileControle {
         return mobileDao.findByIdEmpresaLike(idEmpresa);
     }
 
-    public BalcaoMobile getMobile(String imei) {
-        BalcaoMobile balcaoMobile = mobileDao.findByImeiLike(imei);
+    public BalcaoMobile getMobile(String imei, Integer idEmpresa) {
+        BalcaoMobile balcaoMobile = mobileDao.findByImeiAndIdEmpresa(imei, idEmpresa);
         if (balcaoMobile == null) {
             throw new NotFoundException("Dispositivo Não Encontrado na Base de Dados!");
         }

@@ -6,6 +6,7 @@
 package Lcserver.Exception;
 
 import Lcserver.ApiwebApplication;
+import Lcserver.Empresa.Empresa;
 import Lcserver.TelaPrincipal;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -108,9 +109,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler({NullPointerException.class, IllegalArgumentException.class})
-    public ResponseEntity<Object> serverException(RuntimeException ex, WebRequest request) {
+    public ResponseEntity<Object> serverException(RuntimeException ex, WebRequest request, Empresa empresa) {
         TelaPrincipal.TelaPrincipal.setErro("Um exceção foi lançada.", ex);
-        ApiwebApplication.auditoriaControle.erro(RestExceptionHandler.class, getHttpMethod(request) + " " + getPath(request), ex);
+        ApiwebApplication.auditoriaControle.erro(RestExceptionHandler.class, getHttpMethod(request) + " " + getPath(request), ex, empresa);
         return handleExceptionInternal(
                 ex, Erro.builder()
                 .addDetalhe("Um exceção foi lançada.")
