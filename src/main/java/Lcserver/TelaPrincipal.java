@@ -251,7 +251,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         jb_sair2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jb_sair2.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/door_in.png"));
+        jb_sair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/door_in.png"))); // NOI18N
         jb_sair2.setText("Sair");
         jb_sair2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,7 +260,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jb_salvar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jb_salvar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagem/disk.png"));
+        jb_salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/disk.png"))); // NOI18N
         jb_salvar.setText("Salvar");
         jb_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,7 +421,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
 
         jb_atualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jb_atualizar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/arrow_refresh.png"));
+        jb_atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
         jb_atualizar.setText("Atualizar");
         jb_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -430,7 +430,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jb_detalhar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jb_detalhar.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/page_edit.png"));
+        jb_detalhar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/page_edit.png"))); // NOI18N
         jb_detalhar.setText("Detalhar");
         jb_detalhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,7 +439,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jb_sair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jb_sair.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/door_in.png"));
+        jb_sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/door_in.png"))); // NOI18N
         jb_sair.setText("Sair");
         jb_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,7 +448,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jb_excluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jb_excluir.setIcon(new javax.swing.ImageIcon("src/main/java/Lcserver/imagens/cancelar_16x16.png"));
+        jb_excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar_16x16.png"))); // NOI18N
         jb_excluir.setText("Excluir");
         jb_excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,7 +465,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 583, Short.MAX_VALUE)
+                        .addGap(6, 503, Short.MAX_VALUE)
                         .addComponent(jb_atualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_excluir)
@@ -482,7 +482,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_detalhar)
