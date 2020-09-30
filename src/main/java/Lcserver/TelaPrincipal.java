@@ -16,18 +16,14 @@ import Lcserver.BalcaoMobile.BalcaoMobileControle;
 import Lcserver.Configuracao.ConfigDao;
 import Lcserver.Empresa.Empresa;
 import Lcserver.Empresa.EmpresaController;
-import Lcserver.Empresa.EmpresaRepository;
 import Lcserver.Exception.PermissaoInsuficienteException;
 import Lcserver.Mensagens.msgTelaPergunta;
 import Lcserver.Usuario.Usuario;
 import SessaoAberta.SessaoAberta;
 import Util.Funcoes;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -756,20 +752,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void registrar() {
         if (jtf_codInstalacao.getText().toString().trim().isEmpty()) {
-            new MsgTelaAtencao(this, true, "Serial para Liberação de Dispositivos Invalido !").setVisible(true);
+            new MsgTelaAtencao(this, true, "Serial para liberação de dispositivos invalido !").setVisible(true);
         } else {
             try {
 //                balcaoConfigDao.deleteById(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId());
                 balcaoConfigDao.save(new BalcaoConfig(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId(), listEmpresa.get(jcb_empresa1.getSelectedIndex()), jtf_codInstalacao.getText().toString()));
                 SessaoAberta.setQntMobilePermitida(Funcoes.getMobilePermitido(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getCnpj(), balcaoConfigDao.getBalcaoConfigById(listEmpresa.get(jcb_empresa1.getSelectedIndex()).getId())));
                 if (SessaoAberta.getQntMobilePermitida() == 0) {
-                    new MsgTelaAtencao(this, true, "Código de Instalação Cadastrado Invalido para Este CNPJ !\n").setVisible(true);
+                    new MsgTelaAtencao(this, true, "Código de instalação cadastrado invalido para este CNPJ !\n").setVisible(true);
                 } else {
-                    new msgTelaOK(this, true, "Código de Instalação Cadastrado com Sucesso !\n" + "Dispositivos: " + SessaoAberta.getQntMobilePermitida()).setVisible(true);
+                    new msgTelaOK(this, true, "Código de instalação cadastrado com sucesso !\n" + "Dispositivos: " + SessaoAberta.getQntMobilePermitida()).setVisible(true);
                 }
             } catch (Exception e) {
                 setErro("jbtn_registrarActionPerformed", e);
-                new MsgTelaErro(this, true, "Erro ao Registrar", e, getClass(), "jbtn_registrarActionPerformed", listEmpresa.get(jcb_empresa1.getSelectedIndex())).setVisible(true);
+                new MsgTelaErro(this, true, "Erro ao registrar", e, getClass(), "jbtn_registrarActionPerformed", listEmpresa.get(jcb_empresa1.getSelectedIndex())).setVisible(true);
             }
         }
     }
